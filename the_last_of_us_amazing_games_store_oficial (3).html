@@ -1,0 +1,2361 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Last of Us | Amazing Games Store Oficial</title>
+  <meta name="description" content="Quando você está perdido na escuridão, procure a luz. Explore a história, o universo, personagens e mecânicas de The Last of Us na Amazing Games Store Oficial." />
+
+  <!-- Tipografia Moderna: Inter para leitura e Rajdhani para títulos cinematográficos -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Rajdhani:wght@600;700&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN para utilitários responsivos -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Arquitetura Profissional de CSS (Tokens, Glassmorphism, Neon Glows & Animações) -->
+  <style>
+    /* ==========================================================================
+       1. DESIGN TOKENS & VARIÁVEIS CSS (PALETA ESTRITA PRETO, ROXO & AZUL)
+       ========================================================================== */
+    :root {
+      --bg-abyss: #05050a;
+      --bg-surface: #0b0b14;
+      --bg-elevated: #121222;
+
+      --purple-neon: #8b5cf6;
+      --purple-deep: #7c3aed;
+      --purple-bright: #a855f7;
+      --blue-electric: #3b82f6;
+      --cyan-glow: #06b6d4;
+      --blue-cobalt: #1d4ed8;
+
+      --text-primary: #f8fafc;
+      --text-secondary: #cbd5e1;
+      --text-muted: #94a3b8;
+
+      --border-glass: rgba(139, 92, 246, 0.24);
+      --border-glass-hover: rgba(6, 182, 212, 0.58);
+
+      --gradient-neon: linear-gradient(135deg, var(--purple-neon) 0%, var(--blue-electric) 52%, var(--cyan-glow) 100%);
+      --gradient-cta: linear-gradient(135deg, var(--purple-deep) 0%, var(--purple-bright) 48%, var(--blue-electric) 100%);
+      --shadow-neon-purple: 0 0 28px rgba(139, 92, 246, 0.38);
+      --shadow-neon-blue: 0 0 32px rgba(59, 130, 246, 0.36);
+
+      --radius-card: 1.25rem;
+      --transition-smooth: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+/* ... existing code ... -->
+    /* Scroll Reveal */
+    .reveal-on-scroll {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .reveal-on-scroll.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ==========================================================================
+       5. COMPONENTES INTERATIVOS: BESTIÁRIO, DOSSIÊ E BANCADA DE CRIAÇÃO
+       ========================================================================== */
+    .interactive-pill {
+      background: rgba(18, 18, 34, 0.72);
+      border: 1px solid rgba(139, 92, 246, 0.22);
+      transition: var(--transition-smooth);
+    }
+
+    .interactive-pill:hover {
+      border-color: rgba(59, 130, 246, 0.52);
+      background: rgba(18, 18, 34, 0.96);
+    }
+
+    .interactive-pill.active {
+      background: linear-gradient(135deg, rgba(124, 58, 237, 0.3), rgba(29, 78, 216, 0.25));
+      border-color: var(--cyan-glow);
+      box-shadow: 0 0 24px rgba(6, 182, 212, 0.25);
+    }
+
+    .stat-bar-track {
+      background: rgba(5, 5, 10, 0.9);
+      border: 1px solid rgba(139, 92, 246, 0.2);
+      overflow: hidden;
+    }
+
+    .stat-bar-fill {
+      background: var(--gradient-neon);
+      box-shadow: 0 0 12px rgba(6, 182, 212, 0.5);
+      transition: width 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .resource-node {
+      background: rgba(11, 11, 20, 0.9);
+      border: 1px solid rgba(139, 92, 246, 0.26);
+      transition: var(--transition-smooth);
+    }
+
+    .resource-node:hover {
+      border-color: var(--blue-electric);
+      transform: translateY(-2px);
+    }
+
+    .resource-node.selected {
+      background: linear-gradient(145deg, rgba(124, 58, 237, 0.35), rgba(6, 182, 212, 0.2));
+      border-color: var(--cyan-glow);
+      box-shadow: 0 0 22px rgba(139, 92, 246, 0.35);
+    }
+  </style>
+</head>
+<body class="selection:bg-[#8b5cf6] selection:text-white">
+
+  <!-- ========================================================================
+       1. NAVBAR FIXA COM IDENTIDADE AMAZING GAMES STORE OFICIAL
+       ======================================================================== -->
+  <header class="glass-navbar fixed top-0 left-0 right-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between py-3.5">
+        <!-- Logotipo Customizado AMAZING GAMES + Tag STORE OFICIAL -->
+        <a href="#inicio" class="flex items-center gap-3 group focus:outline-none">
+          <div class="w-10 h-10 rounded-xl flex items-center justify-center bg-gradient-to-br from-[#7c3aed]/40 via-[#8b5cf6]/25 to-[#3b82f6]/35 border border-[#8b5cf6]/50 group-hover:border-[#06b6d4] transition-all duration-300 shadow-[0_0_18px_rgba(139,92,246,0.35)]">
+            <!-- Emblema Geométrico Amazing Games (Gradiente Roxo -> Azul) -->
+            <svg class="w-6 h-6" viewBox="0 0 32 32" fill="none">
+              <defs>
+                <linearGradient id="amazingLogoGrad" x1="2" y1="2" x2="30" y2="30" gradientUnits="userSpaceOnUse">
+                  <stop offset="0%" stop-color="#a855f7" />
+                  <stop offset="50%" stop-color="#3b82f6" />
+                  <stop offset="100%" stop-color="#06b6d4" />
+                </linearGradient>
+              </defs>
+              <polygon points="16,2 29,9.5 29,22.5 16,30 3,22.5 3,9.5" stroke="url(#amazingLogoGrad)" stroke-width="2.2" fill="rgba(18,18,34,0.8)" />
+              <path d="M16 7L23.5 22H19.6L16 14.4L12.4 22H8.5L16 7Z" fill="url(#amazingLogoGrad)" />
+              <circle cx="16" cy="23.5" r="2" fill="#06b6d4" />
+            </svg>
+          </div>
+          <div class="flex flex-col">
+            <div class="flex items-center gap-2">
+              <span class="font-display font-bold text-lg sm:text-xl tracking-wider text-white leading-none">
+                AMAZING <span class="text-neon-gradient">GAMES</span>
+              </span>
+              <span class="hidden sm:inline-block px-1.5 py-0.5 rounded text-[9px] font-bold uppercase tracking-widest bg-[#8b5cf6]/20 text-[#06b6d4] border border-[#06b6d4]/40">
+                STORE OFICIAL
+              </span>
+            </div>
+            <span class="text-[10px] uppercase tracking-[0.2em] text-[#94a3b8] mt-0.5">
+              Distribuidora Autorizada • The Last of Us
+            </span>
+          </div>
+        </a>
+
+        <!-- Links de Navegação Desktop -->
+        <nav class="hidden lg:flex items-center gap-6" aria-label="Navegação Principal">
+          <a href="#historia" class="text-sm font-medium text-[#cbd5e1] hover:text-[#06b6d4] transition-colors">História</a>
+          <a href="#universo" class="text-sm font-medium text-[#cbd5e1] hover:text-[#06b6d4] transition-colors">Universo</a>
+          <a href="#personagens" class="text-sm font-medium text-[#cbd5e1] hover:text-[#06b6d4] transition-colors">Personagens</a>
+          <a href="#mecanicas" class="text-sm font-medium text-[#cbd5e1] hover:text-[#06b6d4] transition-colors">Mecânicas</a>
+          <a href="#diferenciais" class="text-sm font-medium text-[#cbd5e1] hover:text-[#06b6d4] transition-colors">Diferenciais</a>
+          <a href="#edicoes" class="text-sm font-medium text-[#cbd5e1] hover:text-[#06b6d4] transition-colors">Edições</a>
+        </nav>
+
+        <!-- Botão CTA Navbar + Menu Mobile -->
+        <div class="flex items-center gap-2.5">
+          <button
+            type="button"
+            data-open-modal="colecionador"
+            class="btn-neon-primary px-3.5 sm:px-5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold tracking-wide cursor-pointer flex items-center gap-2"
+          >
+            <svg class="w-4 h-4 text-[#06b6d4] hidden sm:inline" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+            </svg>
+            <span>Comprar na Amazing Games</span>
+          </button>
+
+          <!-- Botão Mobile Menu -->
+          <button
+            id="mobile-menu-btn"
+            type="button"
+            aria-label="Abrir menu de navegação"
+            aria-expanded="false"
+            class="lg:hidden p-2.5 rounded-xl bg-[#121222] border border-[#8b5cf6]/35 text-[#cbd5e1] hover:text-white hover:border-[#06b6d4] transition-colors"
+          >
+            <svg id="menu-icon-open" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+            <svg id="menu-icon-close" class="w-5 h-5 hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Menu Mobile Expansível -->
+      <div id="mobile-menu" class="hidden lg:hidden pb-4 pt-2 border-t border-[#8b5cf6]/15">
+        <nav class="grid grid-cols-2 gap-2">
+          <a href="#historia" class="mobile-nav-link px-3 py-2.5 rounded-xl text-sm font-medium text-[#cbd5e1] hover:bg-[#8b5cf6]/15 hover:text-white transition-colors">01. História</a>
+          <a href="#universo" class="mobile-nav-link px-3 py-2.5 rounded-xl text-sm font-medium text-[#cbd5e1] hover:bg-[#8b5cf6]/15 hover:text-white transition-colors">02. Universo</a>
+          <a href="#personagens" class="mobile-nav-link px-3 py-2.5 rounded-xl text-sm font-medium text-[#cbd5e1] hover:bg-[#8b5cf6]/15 hover:text-white transition-colors">03. Personagens</a>
+          <a href="#mecanicas" class="mobile-nav-link px-3 py-2.5 rounded-xl text-sm font-medium text-[#cbd5e1] hover:bg-[#8b5cf6]/15 hover:text-white transition-colors">04. Mecânicas</a>
+          <a href="#diferenciais" class="mobile-nav-link px-3 py-2.5 rounded-xl text-sm font-medium text-[#cbd5e1] hover:bg-[#8b5cf6]/15 hover:text-white transition-colors">05. Diferenciais</a>
+          <a href="#edicoes" class="mobile-nav-link px-3 py-2.5 rounded-xl text-sm font-medium text-[#cbd5e1] hover:bg-[#8b5cf6]/15 hover:text-white transition-colors">06. Edições</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ======================================================================
+         2. HERO SECTION CINEMATOGRÁFICA COM CANVAS INTERATIVO DE ESPOROS
+         ====================================================================== -->
+    <section id="inicio" class="relative min-h-screen flex items-center justify-center pt-28 pb-16 overflow-hidden bg-[#05050a]">
+      <!-- Canvas Interativo de Partículas de Esporos Cordyceps -->
+      <canvas id="spore-canvas" class="absolute inset-0 w-full h-full pointer-events-none z-0"></canvas>
+
+      <!-- Orbes Neon de Profundidade -->
+      <div class="nebula-orb w-[28rem] h-[28rem] bg-[#7c3aed] -top-24 -left-24"></div>
+      <div class="nebula-orb w-[30rem] h-[30rem] bg-[#1d4ed8] bottom-0 -right-24" style="animation-delay: -5s;"></div>
+
+      <!-- Vinheta Radial para Contraste Tipográfico -->
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_12%,#05050a_88%)] pointer-events-none z-0"></div>
+
+      <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <!-- Selo Superior Oficial Amazing Games -->
+        <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#121222]/90 border border-[#8b5cf6]/45 shadow-[0_0_24px_rgba(139,92,246,0.25)] mb-7">
+          <span class="w-2 h-2 rounded-full bg-[#06b6d4] animate-ping"></span>
+          <span class="text-xs sm:text-sm font-bold tracking-wider uppercase text-[#f8fafc]">
+            AMAZING GAMES APRESENTA • <span class="text-[#06b6d4]">DISTRIBUIÇÃO OFICIAL</span>
+          </span>
+        </div>
+
+        <!-- Título Principal Monumental -->
+        <h1 class="font-display font-bold text-5xl sm:text-7xl md:text-8xl tracking-tight uppercase leading-[0.94] mb-6">
+          <span class="block text-[#f8fafc] drop-shadow-[0_4px_24px_rgba(0,0,0,0.9)]">THE LAST</span>
+          <span class="block bg-gradient-to-r from-[#f8fafc] via-[#a855f7] to-[#06b6d4] bg-clip-text text-transparent drop-shadow-[0_0_34px_rgba(139,92,246,0.4)]">
+            OF US
+          </span>
+        </h1>
+
+        <!-- Subtítulo Icônico -->
+        <blockquote class="max-w-2xl mx-auto mb-5">
+          <p class="text-xl sm:text-2xl md:text-3xl font-light italic text-[#f8fafc] leading-relaxed">
+            “Quando você está perdido na escuridão, <span class="font-semibold not-italic text-[#06b6d4]">procure a luz</span>.”
+          </p>
+        </blockquote>
+
+        <!-- Pitch Comercial Envolvente -->
+        <p class="max-w-2xl mx-auto text-sm sm:text-base md:text-lg text-[#94a3b8] leading-relaxed mb-10">
+          Viva a jornada pós-apocalíptica mais aclamada da história dos games. Em uma América devastada pelo fungo <strong class="text-[#f8fafc] font-medium">Cordyceps</strong>, guie Joel e Ellie em uma travessia inesquecível de sobrevivência, sacrifício e esperança — agora disponível com entrega instantânea, bônus exclusivos e suporte dedicado da <strong class="text-[#a855f7] font-semibold">Amazing Games</strong>.
+        </p>
+
+        <!-- Dois Botões CTA -->
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-5 mb-14">
+          <a
+            href="#edicoes"
+            class="btn-neon-primary w-full sm:w-auto px-8 py-4 rounded-2xl font-bold text-base tracking-wide flex items-center justify-center gap-2.5"
+          >
+            <span>Adquirir na Amazing Store</span>
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+            </svg>
+          </a>
+
+          <a
+            href="#historia"
+            class="btn-glass-secondary w-full sm:w-auto px-8 py-4 rounded-2xl font-semibold text-base tracking-wide flex items-center justify-center gap-2.5"
+          >
+            <svg class="w-5 h-5 text-[#a855f7]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+            </svg>
+            <span>Explorar Universo & História</span>
+          </a>
+        </div>
+
+        <!-- Barra de Prova Social -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 max-w-4xl mx-auto">
+          <div class="glass-panel p-4 text-center">
+            <div class="font-display font-bold text-2xl sm:text-3xl text-neon-gradient">+200</div>
+            <div class="text-xs text-[#94a3b8] uppercase tracking-wider mt-1">Prêmios GOTY</div>
+          </div>
+          <div class="glass-panel p-4 text-center">
+            <div class="font-display font-bold text-2xl sm:text-3xl text-[#06b6d4]">95 / 100</div>
+            <div class="text-xs text-[#94a3b8] uppercase tracking-wider mt-1">Metacritic</div>
+          </div>
+          <div class="glass-panel p-4 text-center">
+            <div class="font-display font-bold text-2xl sm:text-3xl text-[#a855f7]">100%</div>
+            <div class="text-xs text-[#94a3b8] uppercase tracking-wider mt-1">Dublado em PT-BR</div>
+          </div>
+          <div class="glass-panel p-4 text-center">
+            <div class="font-display font-bold text-2xl sm:text-3xl text-[#f8fafc]">BLINDADA</div>
+            <div class="text-xs text-[#94a3b8] uppercase tracking-wider mt-1">Garantia Amazing Games</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         3. SEÇÃO 1 — A HISTÓRIA (LINHA DO TEMPO INTERATIVA EM 4 CAPÍTULOS)
+         ====================================================================== -->
+    <section id="historia" class="relative py-24 bg-[#0b0b14] border-y border-[#8b5cf6]/15 overflow-hidden">
+      <div class="nebula-orb w-96 h-96 bg-[#8b5cf6] top-12 right-0 opacity-25"></div>
+
+      <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 reveal-on-scroll">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+          <div class="max-w-3xl">
+            <span class="inline-block text-xs font-bold uppercase tracking-[0.25em] text-[#06b6d4] mb-3">
+              01 • Crônicas do Colapso • Linha do Tempo Interativa
+            </span>
+            <h2 class="font-display font-bold text-4xl sm:text-5xl text-[#f8fafc] uppercase tracking-wide mb-4">
+              A História que <span class="text-neon-gradient">Redefiniu os Games</span>
+            </h2>
+            <p class="text-[#94a3b8] text-base sm:text-lg leading-relaxed">
+              Navegue pelos quatro atos fundamentais da jornada ou utilize as setas do teclado (<kbd class="px-1.5 py-0.5 text-xs rounded bg-[#121222] border border-[#8b5cf6]/30 text-[#f8fafc]">←</kbd> <kbd class="px-1.5 py-0.5 text-xs rounded bg-[#121222] border border-[#8b5cf6]/30 text-[#f8fafc]">→</kbd>) para acompanhar a evolução de Joel e Ellie.
+            </p>
+          </div>
+        </div>
+
+        <!-- Abas Interativas dos 4 Capítulos -->
+        <div id="story-tabs-container" role="tablist" aria-label="Capítulos da história" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 mb-8">
+          <button type="button" role="tab" aria-selected="true" data-chapter="0" class="story-tab active text-left p-4 rounded-2xl cursor-pointer focus:outline-none">
+            <div class="flex items-center justify-between mb-1.5">
+              <span class="text-xs font-bold uppercase tracking-widest text-[#06b6d4]">01 • 2013</span>
+              <span class="tab-dot w-2.5 h-2.5 rounded-full bg-[#8b5cf6]/50 transition-all"></span>
+            </div>
+            <div class="font-display font-bold text-lg text-[#f8fafc]">O Dia do Surto</div>
+            <div class="text-xs text-[#94a3b8] mt-0.5">Austin, Texas — O colapso</div>
+          </button>
+
+          <button type="button" role="tab" aria-selected="false" data-chapter="1" class="story-tab text-left p-4 rounded-2xl cursor-pointer focus:outline-none">
+            <div class="flex items-center justify-between mb-1.5">
+              <span class="text-xs font-bold uppercase tracking-widest text-[#a855f7]">02 • 2033</span>
+              <span class="tab-dot w-2.5 h-2.5 rounded-full bg-[#8b5cf6]/50 transition-all"></span>
+            </div>
+            <div class="font-display font-bold text-lg text-[#f8fafc]">A Zona de Quarentena</div>
+            <div class="text-xs text-[#94a3b8] mt-0.5">Lei marcial da FEDRA em Boston</div>
+          </button>
+
+          <button type="button" role="tab" aria-selected="false" data-chapter="2" class="story-tab text-left p-4 rounded-2xl cursor-pointer focus:outline-none">
+            <div class="flex items-center justify-between mb-1.5">
+              <span class="text-xs font-bold uppercase tracking-widest text-[#3b82f6]">03 • A Esperança</span>
+              <span class="tab-dot w-2.5 h-2.5 rounded-full bg-[#8b5cf6]/50 transition-all"></span>
+            </div>
+            <div class="font-display font-bold text-lg text-[#f8fafc]">A Carga Imune</div>
+            <div class="text-xs text-[#94a3b8] mt-0.5">O segredo vital de Ellie</div>
+          </button>
+
+          <button type="button" role="tab" aria-selected="false" data-chapter="3" class="story-tab text-left p-4 rounded-2xl cursor-pointer focus:outline-none">
+            <div class="flex items-center justify-between mb-1.5">
+              <span class="text-xs font-bold uppercase tracking-widest text-[#06b6d4]">04 • A Travessia</span>
+              <span class="tab-dot w-2.5 h-2.5 rounded-full bg-[#8b5cf6]/50 transition-all"></span>
+            </div>
+            <div class="font-display font-bold text-lg text-[#f8fafc]">As Quatro Estações</div>
+            <div class="text-xs text-[#94a3b8] mt-0.5">Verão, Outono, Inverno e Primavera</div>
+          </button>
+        </div>
+
+        <!-- Painel Dinâmico do Capítulo Ativo -->
+        <div id="story-panel" class="glass-panel p-6 sm:p-10 relative overflow-hidden">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            <div class="lg:col-span-7 space-y-5">
+              <div class="flex flex-wrap items-center gap-2.5">
+                <span id="story-badge" class="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-[#8b5cf6]/20 text-[#a855f7] border border-[#8b5cf6]/40">
+                  Setembro de 2013 • Austin, Texas
+                </span>
+                <span id="story-threat" class="px-3 py-1 rounded-full text-xs font-medium bg-[#3b82f6]/15 text-[#06b6d4] border border-[#3b82f6]/35">
+                  Ameaça: Mutação Cordyceps
+                </span>
+              </div>
+
+              <h3 id="story-title" class="font-display font-bold text-3xl sm:text-4xl text-[#f8fafc] leading-tight">
+                O Dia do Surto (2013)
+              </h3>
+
+              <p id="story-description" class="text-[#cbd5e1] text-base sm:text-lg leading-relaxed">
+                Em Austin, Texas, uma mutação fulminante do fungo parasita Cordyceps salta para os seres humanos e destrói a sociedade moderna em questão de horas. Em meio ao pânico das ruas em chamas e ao colapso das forças de segurança, Joel sofre uma perda irreparável que moldará sua alma pelos próximos vinte anos.
+              </p>
+
+              <div class="p-4 rounded-xl bg-[#05050a]/90 border-l-4 border-[#06b6d4]">
+                <p id="story-quote" class="text-sm sm:text-base italic text-[#94a3b8]">
+                  “Em uma única noite, o mundo que conhecíamos desapareceu — e tudo o que restou foi a luta para amanhecer vivo.”
+                </p>
+              </div>
+
+              <!-- Controles Anterior / Próximo -->
+              <div class="pt-2 flex flex-wrap items-center justify-between gap-4">
+                <div class="flex items-center gap-2 text-xs text-[#94a3b8]">
+                  <span>Capítulo Atual:</span>
+                  <span id="story-counter" class="font-bold text-[#f8fafc]">01 / 04</span>
+                </div>
+
+                <div class="flex items-center gap-3">
+                  <button
+                    id="story-prev-btn"
+                    type="button"
+                    class="px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold bg-[#121222] border border-[#8b5cf6]/35 text-[#cbd5e1] hover:border-[#06b6d4] hover:text-white transition-all cursor-pointer"
+                  >
+                    ← Anterior
+                  </button>
+                  <button
+                    id="story-next-btn"
+                    type="button"
+                    class="btn-neon-primary px-5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold cursor-pointer"
+                  >
+                    Próximo →
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card Técnico do Arquivo Narrativo -->
+            <div class="lg:col-span-5">
+              <div class="relative rounded-2xl bg-[#05050a] border border-[#8b5cf6]/30 p-6 sm:p-8 flex flex-col justify-between min-h-[290px] overflow-hidden">
+                <div class="absolute inset-0 opacity-20" style="background-image: radial-gradient(#3b82f6 1px, transparent 1px); background-size: 20px 20px;"></div>
+
+                <div class="relative z-10 flex items-center justify-between">
+                  <span class="text-xs font-mono uppercase tracking-widest text-[#06b6d4]">ARQUIVO // AMAZING LORE</span>
+                  <span id="story-code" class="text-xs font-mono text-[#a855f7]">ACT-2013-01</span>
+                </div>
+
+                <div id="story-artwork" class="relative z-10 my-6 flex items-center justify-center">
+                  <div class="w-28 h-28 rounded-3xl bg-gradient-to-br from-[#7c3aed]/30 to-[#06b6d4]/20 border border-[#8b5cf6]/50 flex items-center justify-center shadow-[0_0_40px_rgba(139,92,246,0.35)]">
+                    <svg class="w-14 h-14 text-[#06b6d4]" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                    </svg>
+                  </div>
+                </div>
+
+                <div class="relative z-10 grid grid-cols-2 gap-3 pt-4 border-t border-[#8b5cf6]/20">
+                  <div>
+                    <div class="text-[11px] uppercase tracking-wider text-[#94a3b8]">Cenário</div>
+                    <div id="story-location" class="text-sm font-semibold text-[#f8fafc] mt-0.5">Austin, Texas</div>
+                  </div>
+                  <div>
+                    <div class="text-[11px] uppercase tracking-wider text-[#94a3b8]">Marco Narrativo</div>
+                    <div id="story-key-item" class="text-sm font-semibold text-[#06b6d4] mt-0.5">Noite do Colapso</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         4. SEÇÃO 2 — O UNIVERSO & BESTIÁRIO (LORE E ESTÁGIOS DA INFECÇÃO)
+         ====================================================================== -->
+    <section id="universo" class="relative py-24 bg-[#05050a] overflow-hidden">
+      <div class="nebula-orb w-[28rem] h-[28rem] bg-[#3b82f6] top-24 -left-28 opacity-20"></div>
+
+      <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 reveal-on-scroll">
+        <div class="max-w-3xl mb-14">
+          <span class="inline-block text-xs font-bold uppercase tracking-[0.25em] text-[#a855f7] mb-3">
+            02 • Construção de Mundo & Ecologia Hostil
+          </span>
+          <h2 class="font-display font-bold text-4xl sm:text-5xl text-[#f8fafc] uppercase tracking-wide mb-4">
+            O Universo & <span class="text-neon-gradient">Bestiário Cordyceps</span>
+          </h2>
+          <p class="text-[#94a3b8] text-base sm:text-lg leading-relaxed">
+            Vinte anos após a queda da civilização, o maior perigo nem sempre são os infectados. Conheça as forças que disputam os escombros da América e estude os 4 estágios evolutivos da infecção fúngica.
+          </p>
+        </div>
+
+        <!-- BLOCO A: Facções e Mundo Pós-Pandêmico (4 Cards com Spotlight) -->
+        <div class="mb-16">
+          <h3 class="font-display font-bold text-xl uppercase tracking-wider text-[#06b6d4] mb-6 flex items-center gap-2.5">
+            <span class="w-2 h-2 rounded-full bg-[#06b6d4]"></span>
+            Bloco A • Facções & Ecossistema Pós-Pandêmico
+          </h3>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+            <!-- Facção 1: FEDRA -->
+            <article class="glass-panel spotlight-card p-6 flex flex-col justify-between">
+              <div>
+                <div class="w-12 h-12 rounded-2xl bg-[#1d4ed8]/25 border border-[#3b82f6]/45 flex items-center justify-center text-[#3b82f6] mb-5">
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.9" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                  </svg>
+                </div>
+                <h4 class="font-display font-bold text-xl text-[#f8fafc] mb-2">FEDRA & Zonas de Quarentena</h4>
+                <p class="text-sm text-[#94a3b8] leading-relaxed">
+                  Controle militar autoritário que governa as últimas metrópoles muradas sob toque de recolher rigoroso, execuções sumárias e racionamento severo de alimentos e remédios.
+                </p>
+              </div>
+              <div class="mt-5 pt-3 border-t border-white/10 text-[11px] font-mono uppercase text-[#3b82f6]">
+                Regime: Lei Marcial Absoluta
+              </div>
+            </article>
+
+            <!-- Facção 2: Os Vaga-Lumes -->
+            <article class="glass-panel spotlight-card p-6 flex flex-col justify-between">
+              <div>
+                <div class="w-12 h-12 rounded-2xl bg-[#7c3aed]/25 border border-[#8b5cf6]/45 flex items-center justify-center text-[#a855f7] mb-5">
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.9" viewBox="0 0 24 24">
+                    <circle cx="12" cy="7" r="2.2" fill="currentColor" />
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 9.5v9M12 11c-4.5-2.5-8.5-1.2-9 2.2 3.2 1.2 6.5.5 9-2.2zm0 0c4.5-2.5 8.5-1.2 9 2.2-3.2 1.2-6.5.5-9-2.2z" />
+                  </svg>
+                </div>
+                <h4 class="font-display font-bold text-xl text-[#f8fafc] mb-2">Os Vaga-Lumes (Fireflies)</h4>
+                <p class="text-sm text-[#94a3b8] leading-relaxed">
+                  Grupo paramilitar rebelde que combate a opressão da FEDRA pelas armas enquanto financia cientistas clandestinos na busca desesperada por uma vacina contra o Cordyceps.
+                </p>
+              </div>
+              <div class="mt-5 pt-3 border-t border-white/10 text-[11px] font-mono uppercase text-[#a855f7]">
+                Lema: “Procure a Luz”
+              </div>
+            </article>
+
+            <!-- Facção 3: Caçadores e Sobreviventes -->
+            <article class="glass-panel spotlight-card p-6 flex flex-col justify-between">
+              <div>
+                <div class="w-12 h-12 rounded-2xl bg-[#8b5cf6]/20 border border-[#a855f7]/40 flex items-center justify-center text-[#8b5cf6] mb-5">
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.9" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z" />
+                  </svg>
+                </div>
+                <h4 class="font-display font-bold text-xl text-[#f8fafc] mb-2">Caçadores & Sobreviventes</h4>
+                <p class="text-sm text-[#94a3b8] leading-relaxed">
+                  Facções nômades e saqueadores implacáveis que dominam rodovias e ruínas urbanas, armando emboscadas mortais para tomar botas, munição e suprimentos de viajantes.
+                </p>
+              </div>
+              <div class="mt-5 pt-3 border-t border-white/10 text-[11px] font-mono uppercase text-[#8b5cf6]">
+                Ameaça: Emboscadas Táticas
+              </div>
+            </article>
+
+            <!-- Facção 4: Natureza Indomada e Esporos -->
+            <article class="glass-panel spotlight-card p-6 flex flex-col justify-between">
+              <div>
+                <div class="w-12 h-12 rounded-2xl bg-[#06b6d4]/20 border border-[#06b6d4]/45 flex items-center justify-center text-[#06b6d4] mb-5">
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.9" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064" />
+                  </svg>
+                </div>
+                <h4 class="font-display font-bold text-xl text-[#f8fafc] mb-2">Natureza Indomada & Esporos</h4>
+                <p class="text-sm text-[#94a3b8] leading-relaxed">
+                  Arranha-céus engolidos por florestas densas, metrôs alagados e porões sem ventilação saturados por nuvens tóxicas de esporos onde a máscara de gás é obrigatória.
+                </p>
+              </div>
+              <div class="mt-5 pt-3 border-t border-white/10 text-[11px] font-mono uppercase text-[#06b6d4]">
+                Risco: Contágio Aéreo
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <!-- BLOCO B: Bestiário Interativo (Estágios do Cordyceps) -->
+        <div class="glass-panel p-6 sm:p-9 border-[#8b5cf6]/35">
+          <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 mb-8">
+            <div>
+              <h3 class="font-display font-bold text-2xl sm:text-3xl text-[#f8fafc] uppercase flex items-center gap-2.5">
+                <span class="w-2.5 h-2.5 rounded-full bg-[#a855f7]"></span>
+                Bloco B • Bestiário Interativo: Estágios do Cordyceps
+              </h3>
+              <p class="text-sm text-[#94a3b8] mt-1">
+                Selecione cada estágio evolutivo da infecção para analisar comportamento tático, nível de letalidade e fraquezas.
+              </p>
+            </div>
+
+            <!-- Botões Seletores dos 4 Estágios -->
+            <div role="tablist" aria-label="Estágios da Infecção" class="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+              <button type="button" data-stage="0" class="bestiary-tab interactive-pill active px-3.5 py-2.5 rounded-xl text-xs font-bold text-[#f8fafc] cursor-pointer">
+                Estágio 1 • Corredores
+              </button>
+              <button type="button" data-stage="1" class="bestiary-tab interactive-pill px-3.5 py-2.5 rounded-xl text-xs font-bold text-[#cbd5e1] cursor-pointer">
+                Estágio 2 • Perseguidores
+              </button>
+              <button type="button" data-stage="2" class="bestiary-tab interactive-pill px-3.5 py-2.5 rounded-xl text-xs font-bold text-[#cbd5e1] cursor-pointer">
+                Estágio 3 • Estaladores
+              </button>
+              <button type="button" data-stage="3" class="bestiary-tab interactive-pill px-3.5 py-2.5 rounded-xl text-xs font-bold text-[#cbd5e1] cursor-pointer">
+                Estágio 4 • Baiacus
+              </button>
+            </div>
+          </div>
+
+          <!-- Painel Dinâmico do Bestiário -->
+          <div id="bestiary-panel" class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-[#05050a]/85 rounded-2xl p-6 sm:p-8 border border-[#8b5cf6]/25">
+            <div class="lg:col-span-7 space-y-4">
+              <div class="flex flex-wrap items-center gap-2.5">
+                <span id="stage-badge" class="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-[#3b82f6]/20 text-[#06b6d4] border border-[#06b6d4]/40">
+                  Estágio 1 • 2 Dias a 2 Semanas de Infecção
+                </span>
+                <span id="stage-sense" class="px-3 py-1 rounded-full text-xs font-medium bg-[#8b5cf6]/15 text-[#a855f7] border border-[#8b5cf6]/35">
+                  Sensor Primário: Visão & Audição
+                </span>
+              </div>
+
+              <h4 id="stage-title" class="font-display font-bold text-3xl text-[#f8fafc]">
+                Corredores (Runners)
+              </h4>
+
+              <p id="stage-behavior" class="text-sm sm:text-base text-[#cbd5e1] leading-relaxed">
+                Recém-infectados que ainda preservam traços humanos e visão funcional. Extremamente velozes e impulsivos, atacam em bandos desordenados assim que avistam uma presa, alertando outros infectados próximos com gritos agudos.
+              </p>
+
+              <div class="p-4 rounded-xl bg-[#121222] border border-[#8b5cf6]/25">
+                <div class="text-xs font-bold uppercase tracking-wider text-[#06b6d4] mb-1">Fraqueza & Protocolo Tático</div>
+                <p id="stage-weakness" class="text-sm text-[#cbd5e1]">
+                  Vulneráveis a golpes corpo a corpo rápidos, estrangulamento furtivo pelas costas e tiros precisos na cabeça com armas leves.
+                </p>
+              </div>
+            </div>
+
+            <!-- Medidores Visuais de Ameaça em Roxo e Azul -->
+            <div class="lg:col-span-5 space-y-4 bg-[#121222]/90 p-5 sm:p-6 rounded-2xl border border-[#8b5cf6]/25">
+              <div class="text-xs font-mono uppercase tracking-widest text-[#94a3b8] mb-2">
+                Telemetria Biológica // Nível de Ameaça
+              </div>
+
+              <div>
+                <div class="flex justify-between text-xs font-semibold mb-1.5">
+                  <span class="text-[#cbd5e1]">Letalidade Direta</span>
+                  <span id="stage-lethality-val" class="text-[#06b6d4]">45%</span>
+                </div>
+                <div class="stat-bar-track h-2.5 rounded-full">
+                  <div id="stage-lethality-bar" class="stat-bar-fill h-full rounded-full" style="width: 45%"></div>
+                </div>
+              </div>
+
+              <div>
+                <div class="flex justify-between text-xs font-semibold mb-1.5">
+                  <span class="text-[#cbd5e1]">Velocidade & Agilidade</span>
+                  <span id="stage-speed-val" class="text-[#a855f7]">92%</span>
+                </div>
+                <div class="stat-bar-track h-2.5 rounded-full">
+                  <div id="stage-speed-bar" class="stat-bar-fill h-full rounded-full" style="width: 92%"></div>
+                </div>
+              </div>
+
+              <div>
+                <div class="flex justify-between text-xs font-semibold mb-1.5">
+                  <span class="text-[#cbd5e1]">Blindagem Fúngica</span>
+                  <span id="stage-armor-val" class="text-[#3b82f6]">15%</span>
+                </div>
+                <div class="stat-bar-track h-2.5 rounded-full">
+                  <div id="stage-armor-bar" class="stat-bar-fill h-full rounded-full" style="width: 15%"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         5. SEÇÃO 3 — PERSONAGENS ICÔNICOS (DOSSIÊ INTERATIVO)
+         ====================================================================== -->
+    <section id="personagens" class="relative py-24 bg-[#0b0b14] border-y border-[#8b5cf6]/15 overflow-hidden">
+      <div class="nebula-orb w-96 h-96 bg-[#7c3aed] bottom-10 right-10 opacity-25"></div>
+
+      <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 reveal-on-scroll">
+        <div class="max-w-3xl mb-12">
+          <span class="inline-block text-xs font-bold uppercase tracking-[0.25em] text-[#06b6d4] mb-3">
+            03 • Protagonistas & Aliados • Arquivos Confidenciais
+          </span>
+          <h2 class="font-display font-bold text-4xl sm:text-5xl text-[#f8fafc] uppercase tracking-wide mb-4">
+            Personagens <span class="text-neon-gradient">Inesquecíveis</span>
+          </h2>
+          <p class="text-[#94a3b8] text-base sm:text-lg leading-relaxed">
+            Selecione um personagem para abrir seu dossiê completo com perfil psicológico, papel na jornada e métricas de sobrevivência.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start">
+          <!-- Lista Clicável de Personagens à Esquerda -->
+          <div id="character-list" role="tablist" aria-label="Lista de personagens" class="lg:col-span-4 space-y-3">
+            <button type="button" data-char="0" class="char-select-btn interactive-pill active w-full text-left p-4 rounded-2xl flex items-center justify-between cursor-pointer">
+              <div>
+                <div class="font-display font-bold text-xl text-[#f8fafc]">Joel Miller</div>
+                <div class="text-xs text-[#06b6d4]">O Contrabandista Protetor</div>
+              </div>
+              <span class="text-xs font-mono px-2.5 py-1 rounded-lg bg-[#05050a] text-[#a855f7] border border-[#8b5cf6]/30">01</span>
+            </button>
+
+            <button type="button" data-char="1" class="char-select-btn interactive-pill w-full text-left p-4 rounded-2xl flex items-center justify-between cursor-pointer">
+              <div>
+                <div class="font-display font-bold text-xl text-[#f8fafc]">Ellie Williams</div>
+                <div class="text-xs text-[#94a3b8]">A Chave da Humanidade</div>
+              </div>
+              <span class="text-xs font-mono px-2.5 py-1 rounded-lg bg-[#05050a] text-[#94a3b8] border border-white/10">02</span>
+            </button>
+
+            <button type="button" data-char="2" class="char-select-btn interactive-pill w-full text-left p-4 rounded-2xl flex items-center justify-between cursor-pointer">
+              <div>
+                <div class="font-display font-bold text-xl text-[#f8fafc]">Tess Servopoulos</div>
+                <div class="text-xs text-[#94a3b8]">Estrategista de Boston</div>
+              </div>
+              <span class="text-xs font-mono px-2.5 py-1 rounded-lg bg-[#05050a] text-[#94a3b8] border border-white/10">03</span>
+            </button>
+
+            <button type="button" data-char="3" class="char-select-btn interactive-pill w-full text-left p-4 rounded-2xl flex items-center justify-between cursor-pointer">
+              <div>
+                <div class="font-display font-bold text-xl text-[#f8fafc]">Tommy Miller</div>
+                <div class="text-xs text-[#94a3b8]">O Construtor de Jackson</div>
+              </div>
+              <span class="text-xs font-mono px-2.5 py-1 rounded-lg bg-[#05050a] text-[#94a3b8] border border-white/10">04</span>
+            </button>
+
+            <button type="button" data-char="4" class="char-select-btn interactive-pill w-full text-left p-4 rounded-2xl flex items-center justify-between cursor-pointer">
+              <div>
+                <div class="font-display font-bold text-xl text-[#f8fafc]">Marlene</div>
+                <div class="text-xs text-[#94a3b8]">Comandante dos Vaga-Lumes</div>
+              </div>
+              <span class="text-xs font-mono px-2.5 py-1 rounded-lg bg-[#05050a] text-[#94a3b8] border border-white/10">05</span>
+            </button>
+          </div>
+
+          <!-- Painel de Dossiê Detalhado à Direita -->
+          <div id="character-dossier-panel" class="lg:col-span-8 glass-panel p-6 sm:p-9 border-[#8b5cf6]/35">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-7 items-center">
+              <!-- Retrato Estilizado SVG/CSS -->
+              <div class="md:col-span-5">
+                <div class="relative rounded-2xl bg-gradient-to-b from-[#121222] to-[#05050a] border border-[#8b5cf6]/40 p-6 text-center overflow-hidden shadow-[0_16px_40px_rgba(0,0,0,0.65)]">
+                  <div class="absolute -top-12 -left-12 w-36 h-36 rounded-full bg-[#8b5cf6]/25 blur-2xl pointer-events-none"></div>
+                  <div class="absolute -bottom-12 -right-12 w-36 h-36 rounded-full bg-[#06b6d4]/25 blur-2xl pointer-events-none"></div>
+
+                  <div id="char-portrait" class="relative z-10 w-28 h-28 mx-auto mb-4 rounded-3xl bg-[#05050a] border border-[#06b6d4]/50 flex items-center justify-center shadow-[0_0_28px_rgba(139,92,246,0.3)]">
+                    <!-- SVG Dinâmico do Personagem -->
+                  </div>
+
+                  <span id="char-faction-badge" class="relative z-10 inline-block px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider bg-[#8b5cf6]/20 text-[#a855f7] border border-[#8b5cf6]/40">
+                    Sobrevivente Independente
+                  </span>
+
+                  <div class="relative z-10 mt-5 pt-4 border-t border-white/10 text-left space-y-3">
+                    <div>
+                      <div class="flex justify-between text-xs mb-1">
+                        <span class="text-[#94a3b8]">Combate</span>
+                        <span id="char-stat-combat-val" class="font-bold text-[#f8fafc]">95%</span>
+                      </div>
+                      <div class="stat-bar-track h-2 rounded-full">
+                        <div id="char-stat-combat-bar" class="stat-bar-fill h-full rounded-full" style="width: 95%"></div>
+                      </div>
+                    </div>
+
+                    <div>
+                      <div class="flex justify-between text-xs mb-1">
+                        <span class="text-[#94a3b8]">Furtividade</span>
+                        <span id="char-stat-stealth-val" class="font-bold text-[#f8fafc]">86%</span>
+                      </div>
+                      <div class="stat-bar-track h-2 rounded-full">
+                        <div id="char-stat-stealth-bar" class="stat-bar-fill h-full rounded-full" style="width: 86%"></div>
+                      </div>
+                    </div>
+
+                    <div>
+                      <div class="flex justify-between text-xs mb-1">
+                        <span class="text-[#94a3b8]">Resiliência</span>
+                        <span id="char-stat-resilience-val" class="font-bold text-[#f8fafc]">98%</span>
+                      </div>
+                      <div class="stat-bar-track h-2 rounded-full">
+                        <div id="char-stat-resilience-bar" class="stat-bar-fill h-full rounded-full" style="width: 98%"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Biografia, Papel na Trama e Citação -->
+              <div class="md:col-span-7 space-y-4">
+                <div>
+                  <span id="char-role" class="text-xs font-bold uppercase tracking-widest text-[#06b6d4]">
+                    Protagonista • Contrabandista de Boston
+                  </span>
+                  <h3 id="char-name" class="font-display font-bold text-3xl sm:text-4xl text-[#f8fafc] mt-1">
+                    Joel Miller
+                  </h3>
+                </div>
+
+                <blockquote class="p-4 rounded-xl bg-[#05050a]/90 border-l-4 border-[#a855f7]">
+                  <p id="char-quote" class="text-sm italic text-[#f8fafc]">
+                    “Você luta para sobreviver, custe o que custar. É assim que continuamos respirando.”
+                  </p>
+                </blockquote>
+
+                <p id="char-bio" class="text-sm sm:text-base text-[#cbd5e1] leading-relaxed">
+                  Endurecido por vinte anos de brutalidade após perder sua filha Sarah na noite do surto, Joel tornou-se um sobrevivente pragmático e implacável nas ruas de Boston. Ao aceitar escoltar Ellie através do país, suas muralhas emocionais começam a ruir, transformando um contrato frio no vínculo paternal mais profundo de sua vida.
+                </p>
+
+                <div class="p-3.5 rounded-xl bg-[#121222] border border-[#3b82f6]/30">
+                  <div class="text-[11px] font-bold uppercase tracking-wider text-[#3b82f6]">Papel na Trama</div>
+                  <p id="char-plot-role" class="text-xs sm:text-sm text-[#94a3b8] mt-1">
+                    Guardião principal de Ellie durante toda a travessia dos Estados Unidos, combinando força bruta, instinto tático e experiência de sobrevivência.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         6. SEÇÃO 4 — MECÂNICAS DE JOGO & BANCADA DE CRIAÇÃO INTERATIVA
+         ====================================================================== -->
+    <section id="mecanicas" class="relative py-24 bg-[#05050a] overflow-hidden">
+      <div class="nebula-orb w-[28rem] h-[28rem] bg-[#06b6d4] top-1/3 -right-28 opacity-15"></div>
+
+      <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 reveal-on-scroll">
+        <div class="max-w-3xl mb-12">
+          <span class="inline-block text-xs font-bold uppercase tracking-[0.25em] text-[#a855f7] mb-3">
+            04 • Sistemas de Gameplay & Tensão Tática
+          </span>
+          <h2 class="font-display font-bold text-4xl sm:text-5xl text-[#f8fafc] uppercase tracking-wide mb-4">
+            Mecânicas de <span class="text-neon-gradient">Sobrevivência Pura</span>
+          </h2>
+          <p class="text-[#94a3b8] text-base sm:text-lg leading-relaxed">
+            Cada recurso importa e cada decisão tem consequências imediatas. Conheça os pilares de gameplay e teste você mesmo a <strong class="text-[#f8fafc]">Bancada de Sobrevivência</strong> abaixo.
+          </p>
+        </div>
+
+        <!-- 4 Cards de Pilares de Gameplay -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-14">
+          <article class="glass-panel spotlight-card p-6">
+            <div class="w-12 h-12 rounded-2xl bg-[#8b5cf6]/20 border border-[#8b5cf6]/45 flex items-center justify-center text-[#a855f7] mb-4">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.9" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+              </svg>
+            </div>
+            <h3 class="font-display font-bold text-xl text-[#f8fafc] mb-2">Criação em Tempo Real</h3>
+            <p class="text-sm text-[#94a3b8] leading-relaxed">
+              O jogo nunca pausa enquanto você abre a mochila; improvisar um curativo ou molotov sob fogo inimigo gera adrenalina genuína.
+            </p>
+          </article>
+
+          <article class="glass-panel spotlight-card p-6">
+            <div class="w-12 h-12 rounded-2xl bg-[#06b6d4]/20 border border-[#06b6d4]/45 flex items-center justify-center text-[#06b6d4] mb-4">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.9" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
+              </svg>
+            </div>
+            <h3 class="font-display font-bold text-xl text-[#f8fafc] mb-2">Modo Escuta Tático</h3>
+            <p class="text-sm text-[#94a3b8] leading-relaxed">
+              Concentre sua audição para mapear silhuetas e ondas sonoras de inimigos através das paredes em tons bioluminescentes de azul e roxo.
+            </p>
+          </article>
+
+          <article class="glass-panel spotlight-card p-6">
+            <div class="w-12 h-12 rounded-2xl bg-[#3b82f6]/20 border border-[#3b82f6]/45 flex items-center justify-center text-[#3b82f6] mb-4">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.9" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+              </svg>
+            </div>
+            <h3 class="font-display font-bold text-xl text-[#f8fafc] mb-2">Combate Brutal & Improviso</h3>
+            <p class="text-sm text-[#94a3b8] leading-relaxed">
+              Use tijolos e garrafas para distrair ou atordoar, economize munição escassa e execute finalizações viscerais no corpo a corpo.
+            </p>
+          </article>
+
+          <article class="glass-panel spotlight-card p-6">
+            <div class="w-12 h-12 rounded-2xl bg-[#7c3aed]/25 border border-[#a855f7]/45 flex items-center justify-center text-[#8b5cf6] mb-4">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.9" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+              </svg>
+            </div>
+            <h3 class="font-display font-bold text-xl text-[#f8fafc] mb-2">IA Adaptativa</h3>
+            <p class="text-sm text-[#94a3b8] leading-relaxed">
+              Inimigos flanqueiam, comunicam-se taticamente e avançam ao ouvir o clique do gatilho vazio, enquanto aliados auxiliam dinamicamente.
+            </p>
+          </article>
+        </div>
+
+        <!-- Mini-Simulador Interativo: BANCADA DE SOBREVIVÊNCIA -->
+        <div class="glass-panel p-6 sm:p-9 border-[#06b6d4]/40 shadow-[0_0_45px_rgba(6,182,212,0.12)]">
+          <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-6 border-b border-white/10">
+            <div>
+              <span class="text-xs font-mono uppercase tracking-widest text-[#06b6d4]">SIMULADOR INTERATIVO // MOCHILA DE JOEL</span>
+              <h3 class="font-display font-bold text-2xl sm:text-3xl text-[#f8fafc] uppercase mt-1">
+                Bancada de Sobrevivência
+              </h3>
+              <p class="text-sm text-[#94a3b8] mt-1">
+                Combine <strong class="text-[#f8fafc]">2 recursos coletados</strong> abaixo para fabricar equipamentos táticos em tempo real.
+              </p>
+            </div>
+
+            <!-- Atalhos de Receitas para Teste Rápido -->
+            <div class="flex flex-wrap gap-2">
+              <button type="button" data-preset="alcool,pano" class="recipe-preset-btn px-3 py-1.5 rounded-xl text-xs font-semibold bg-[#121222] border border-[#8b5cf6]/35 text-[#cbd5e1] hover:border-[#06b6d4] hover:text-white transition-colors cursor-pointer">
+                + Kit Médico
+              </button>
+              <button type="button" data-preset="alcool,acucar" class="recipe-preset-btn px-3 py-1.5 rounded-xl text-xs font-semibold bg-[#121222] border border-[#8b5cf6]/35 text-[#cbd5e1] hover:border-[#06b6d4] hover:text-white transition-colors cursor-pointer">
+                + Coquetel Molotov
+              </button>
+              <button type="button" data-preset="lamina,fita" class="recipe-preset-btn px-3 py-1.5 rounded-xl text-xs font-semibold bg-[#121222] border border-[#8b5cf6]/35 text-[#cbd5e1] hover:border-[#06b6d4] hover:text-white transition-colors cursor-pointer">
+                + Faca Improvisada
+              </button>
+              <button type="button" data-preset="lamina,explosivo" class="recipe-preset-btn px-3 py-1.5 rounded-xl text-xs font-semibold bg-[#121222] border border-[#8b5cf6]/35 text-[#cbd5e1] hover:border-[#06b6d4] hover:text-white transition-colors cursor-pointer">
+                + Bomba de Pregos
+              </button>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center pt-7">
+            <!-- Grade de 6 Recursos Coletados -->
+            <div class="lg:col-span-6">
+              <div class="text-xs font-semibold uppercase tracking-wider text-[#cbd5e1] mb-3">
+                1. Selecione 2 Suprimentos da Mochila:
+              </div>
+              <div id="workbench-resources" class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                <button type="button" data-resource="alcool" class="resource-node p-4 rounded-2xl text-left cursor-pointer">
+                  <div class="text-xs font-mono text-[#06b6d4] mb-1">LÍQUIDO</div>
+                  <div class="font-display font-bold text-lg text-[#f8fafc]">Álcool</div>
+                  <div class="text-[11px] text-[#94a3b8]">Antisséptico / Inflamável</div>
+                </button>
+
+                <button type="button" data-resource="pano" class="resource-node p-4 rounded-2xl text-left cursor-pointer">
+                  <div class="text-xs font-mono text-[#a855f7] mb-1">TECIDO</div>
+                  <div class="font-display font-bold text-lg text-[#f8fafc]">Pano</div>
+                  <div class="text-[11px] text-[#94a3b8]">Bandagem / Pavio</div>
+                </button>
+
+                <button type="button" data-resource="lamina" class="resource-node p-4 rounded-2xl text-left cursor-pointer">
+                  <div class="text-xs font-mono text-[#3b82f6] mb-1">METAL</div>
+                  <div class="font-display font-bold text-lg text-[#f8fafc]">Lâmina</div>
+                  <div class="text-[11px] text-[#94a3b8]">Corte / Estilhaço</div>
+                </button>
+
+                <button type="button" data-resource="fita" class="resource-node p-4 rounded-2xl text-left cursor-pointer">
+                  <div class="text-xs font-mono text-[#06b6d4] mb-1">FIXADOR</div>
+                  <div class="font-display font-bold text-lg text-[#f8fafc]">Fita Adesiva</div>
+                  <div class="text-[11px] text-[#94a3b8]">Empunhadura Tática</div>
+                </button>
+
+                <button type="button" data-resource="acucar" class="resource-node p-4 rounded-2xl text-left cursor-pointer">
+                  <div class="text-xs font-mono text-[#a855f7] mb-1">REAGENTE</div>
+                  <div class="font-display font-bold text-lg text-[#f8fafc]">Açúcar</div>
+                  <div class="text-[11px] text-[#94a3b8]">Acelerador Térmico</div>
+                </button>
+
+                <button type="button" data-resource="explosivo" class="resource-node p-4 rounded-2xl text-left cursor-pointer">
+                  <div class="text-xs font-mono text-[#3b82f6] mb-1">PÓLVORA</div>
+                  <div class="font-display font-bold text-lg text-[#f8fafc]">Explosivo</div>
+                  <div class="text-[11px] text-[#94a3b8]">Carga Detonadora</div>
+                </button>
+              </div>
+            </div>
+
+            <!-- Painel de Montagem & Resultado -->
+            <div class="lg:col-span-6 bg-[#05050a]/90 rounded-2xl p-6 border border-[#8b5cf6]/30 space-y-5">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-semibold uppercase tracking-wider text-[#94a3b8]">2. Bancada de Montagem</span>
+                <button id="workbench-clear-btn" type="button" class="text-xs text-[#06b6d4] hover:underline cursor-pointer">
+                  Limpar Seleção
+                </button>
+              </div>
+
+              <!-- Slots Selecionados -->
+              <div class="grid grid-cols-2 gap-3">
+                <div id="slot-1" class="p-3.5 rounded-xl bg-[#121222] border border-dashed border-[#8b5cf6]/40 text-center text-xs text-[#94a3b8]">
+                  Slot 1: Vazio
+                </div>
+                <div id="slot-2" class="p-3.5 rounded-xl bg-[#121222] border border-dashed border-[#8b5cf6]/40 text-center text-xs text-[#94a3b8]">
+                  Slot 2: Vazio
+                </div>
+              </div>
+
+              <!-- Botão Fabricar + Barra de Progresso -->
+              <div>
+                <button
+                  id="craft-action-btn"
+                  type="button"
+                  disabled
+                  class="btn-neon-primary w-full py-3 rounded-xl font-bold text-sm tracking-wide disabled:opacity-45 disabled:cursor-not-allowed cursor-pointer"
+                >
+                  Selecione 2 Recursos para Fabricar
+                </button>
+                <div class="stat-bar-track h-2 rounded-full mt-3">
+                  <div id="craft-progress-bar" class="stat-bar-fill h-full rounded-full" style="width: 0%"></div>
+                </div>
+              </div>
+
+              <!-- Card do Item Fabricado -->
+              <div id="crafted-result-box" class="p-4 rounded-xl bg-[#121222] border border-[#8b5cf6]/25">
+                <div class="flex items-center justify-between mb-1">
+                  <span id="crafted-item-name" class="font-display font-bold text-xl text-[#f8fafc]">Aguardando Combinação...</span>
+                  <span id="crafted-item-tag" class="text-[11px] font-mono uppercase px-2 py-0.5 rounded bg-[#05050a] text-[#06b6d4]">Bancada Pronta</span>
+                </div>
+                <p id="crafted-item-desc" class="text-xs sm:text-sm text-[#94a3b8] leading-relaxed">
+                  Experimente combinar Álcool + Pano, Álcool + Açúcar, Lâmina + Fita Adesiva ou Lâmina + Explosivo para testar o sistema de criação.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         7. SEÇÃO 5 — DIFERENCIAIS & ARGUMENTOS DE VENDA (AMAZING GAMES)
+         ====================================================================== -->
+    <section id="diferenciais" class="relative py-24 bg-[#0b0b14] border-y border-[#8b5cf6]/15 overflow-hidden">
+      <div class="nebula-orb w-[30rem] h-[30rem] bg-[#8b5cf6] -bottom-24 left-1/3 opacity-20"></div>
+
+      <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 reveal-on-scroll">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <span class="inline-block text-xs font-bold uppercase tracking-[0.25em] text-[#06b6d4] mb-3">
+            05 • Por Que Comprar na Amazing Games?
+          </span>
+          <h2 class="font-display font-bold text-4xl sm:text-5xl text-[#f8fafc] uppercase tracking-wide mb-4">
+            Diferenciais & <span class="text-neon-gradient">Garantia Amazing Store</span>
+          </h2>
+          <p class="text-[#94a3b8] text-base sm:text-lg">
+            Unimos uma das maiores obras da história dos videogames à infraestrutura de distribuição digital mais rápida e segura do mercado.
+          </p>
+        </div>
+
+        <!-- Grid de 6 Argumentos Comerciais Persuasivos -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- 1. Obra-Prima Narrativa (+200 GOTY) -->
+          <article class="glass-panel spotlight-card p-7 flex flex-col justify-between">
+            <div>
+              <div class="w-13 h-13 rounded-2xl bg-[#8b5cf6]/20 border border-[#8b5cf6]/45 flex items-center justify-center text-[#a855f7] mb-5">
+                <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+                </svg>
+              </div>
+              <h3 class="font-display font-bold text-2xl text-[#f8fafc] mb-2.5">Obra-Prima Narrativa (+200 GOTY)</h3>
+              <p class="text-sm text-[#94a3b8] leading-relaxed">
+                Uma história inesquecível com atuação premiada e direção cinematográfica impecável que emocionou milhões de jogadores ao redor do mundo.
+              </p>
+            </div>
+            <div class="mt-5 pt-3 border-t border-white/10 text-xs font-semibold text-[#a855f7]">
+              Aclamação Unânime da Crítica
+            </div>
+          </article>
+
+          <!-- 2. Tecnologia & Gráficos de Ponta -->
+          <article class="glass-panel spotlight-card p-7 flex flex-col justify-between">
+            <div>
+              <div class="w-13 h-13 rounded-2xl bg-[#3b82f6]/20 border border-[#3b82f6]/45 flex items-center justify-center text-[#3b82f6] mb-5">
+                <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+              </div>
+              <h3 class="font-display font-bold text-2xl text-[#f8fafc] mb-2.5">Tecnologia & Gráficos de Ponta</h3>
+              <p class="text-sm text-[#94a3b8] leading-relaxed">
+                Texturas em 4K nativo, iluminação global realista, sombras dinâmicas, suporte Ultrawide e taxa de quadros desbloqueada para máxima fluidez.
+              </p>
+            </div>
+            <div class="mt-5 pt-3 border-t border-white/10 text-xs font-semibold text-[#3b82f6]">
+              4K Ultra HD • DLSS & FSR
+            </div>
+          </article>
+
+          <!-- 3. Áudio 3D & Trilha de Gustavo Santaolalla -->
+          <article class="glass-panel spotlight-card p-7 flex flex-col justify-between">
+            <div>
+              <div class="w-13 h-13 rounded-2xl bg-[#06b6d4]/20 border border-[#06b6d4]/45 flex items-center justify-center text-[#06b6d4] mb-5">
+                <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3" />
+                </svg>
+              </div>
+              <h3 class="font-display font-bold text-2xl text-[#f8fafc] mb-2.5">Áudio 3D & Trilha de Gustavo Santaolalla</h3>
+              <p class="text-sm text-[#94a3b8] leading-relaxed">
+                Imersão sonora absoluta com a trilha vencedora do Oscar e localização completa com dublagem e legendas em Português do Brasil.
+              </p>
+            </div>
+            <div class="mt-5 pt-3 border-t border-white/10 text-xs font-semibold text-[#06b6d4]">
+              Áudio Espacial Binaural
+            </div>
+          </article>
+
+          <!-- 4. Edição Completa Sem Microtransações -->
+          <article class="glass-panel spotlight-card p-7 flex flex-col justify-between">
+            <div>
+              <div class="w-13 h-13 rounded-2xl bg-[#7c3aed]/25 border border-[#8b5cf6]/45 flex items-center justify-center text-[#8b5cf6] mb-5">
+                <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                </svg>
+              </div>
+              <h3 class="font-display font-bold text-2xl text-[#f8fafc] mb-2.5">Edição Completa Sem Microtransações</h3>
+              <p class="text-sm text-[#94a3b8] leading-relaxed">
+                Campanha principal completa + capítulo extra aclamado <em>Left Behind</em> já inclusos no pacote, sem passes pagos ou custos ocultos.
+              </p>
+            </div>
+            <div class="mt-5 pt-3 border-t border-white/10 text-xs font-semibold text-[#8b5cf6]">
+              100% Conteúdo Desbloqueável Jogando
+            </div>
+          </article>
+
+          <!-- 5. Ativação Instantânea Amazing Games -->
+          <article class="glass-panel spotlight-card p-7 flex flex-col justify-between">
+            <div>
+              <div class="w-13 h-13 rounded-2xl bg-[#06b6d4]/20 border border-[#06b6d4]/45 flex items-center justify-center text-[#06b6d4] mb-5">
+                <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+              </div>
+              <h3 class="font-display font-bold text-2xl text-[#f8fafc] mb-2.5">Ativação Instantânea Amazing Games</h3>
+              <p class="text-sm text-[#94a3b8] leading-relaxed">
+                Chave digital oficial entregue na hora após a confirmação, com download direto nos servidores CDN dedicados de ultra-velocidade da Amazing Games.
+              </p>
+            </div>
+            <div class="mt-5 pt-3 border-t border-white/10 text-xs font-semibold text-[#06b6d4]">
+              Entrega Digital em Segundos
+            </div>
+          </article>
+
+          <!-- 6. Garantia Blindada Amazing Store -->
+          <article class="glass-panel spotlight-card p-7 flex flex-col justify-between">
+            <div>
+              <div class="w-13 h-13 rounded-2xl bg-[#1d4ed8]/25 border border-[#3b82f6]/45 flex items-center justify-center text-[#3b82f6] mb-5">
+                <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                </svg>
+              </div>
+              <h3 class="font-display font-bold text-2xl text-[#f8fafc] mb-2.5">Garantia Blindada Amazing Store</h3>
+              <p class="text-sm text-[#94a3b8] leading-relaxed">
+                Suporte técnico especializado 24/7 em português e política de reembolso descomplicada de 14 dias garantida pela Amazing Games Entertainment.
+              </p>
+            </div>
+            <div class="mt-5 pt-3 border-t border-white/10 text-xs font-semibold text-[#3b82f6]">
+              Proteção Total ao Consumidor
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         8. SEÇÃO 6 — EDIÇÕES & CHECKOUT OFICIAL (AMAZING GAMES STORE)
+         ====================================================================== -->
+    <section id="edicoes" class="relative py-24 bg-[#05050a] overflow-hidden">
+      <div class="nebula-orb w-96 h-96 bg-[#7c3aed] top-10 -left-24 opacity-30"></div>
+      <div class="nebula-orb w-96 h-96 bg-[#06b6d4] bottom-10 -right-24 opacity-20"></div>
+
+      <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 reveal-on-scroll">
+        <div class="text-center max-w-3xl mx-auto mb-14">
+          <span class="inline-block text-xs font-bold uppercase tracking-[0.25em] text-[#a855f7] mb-3">
+            06 • Amazing Games Store Oficial • Cupom: AMAZING10
+          </span>
+          <h2 class="font-display font-bold text-4xl sm:text-5xl text-[#f8fafc] uppercase tracking-wide mb-4">
+            Escolha Sua <span class="text-neon-gradient">Edição Oficial</span>
+          </h2>
+          <p class="text-[#94a3b8] text-base sm:text-lg">
+            Compare as duas edições distribuídas exclusivamente pela <strong class="text-[#f8fafc]">Amazing Games</strong>. Use o cupom <code class="px-2 py-0.5 rounded bg-[#121222] border border-[#06b6d4]/40 text-[#06b6d4] font-mono text-sm">AMAZING10</code> no checkout para 10% de desconto extra!
+          </p>
+        </div>
+
+        <!-- Comparativo Visual das 2 Edições -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
+          <!-- CARD 1: EDIÇÃO PADRÃO DIGITAL -->
+          <div class="glass-panel p-7 sm:p-9 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between gap-3 mb-5">
+                <span class="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-[#3b82f6]/20 text-[#3b82f6] border border-[#3b82f6]/40">
+                  Edição Essencial
+                </span>
+                <span class="text-xs font-mono text-[#94a3b8]">AMAZING STORE</span>
+              </div>
+
+              <h3 class="font-display font-bold text-3xl text-[#f8fafc] mb-2">
+                Edição Padrão Digital
+              </h3>
+              <p class="text-sm text-[#94a3b8] mb-6">
+                A experiência narrativa completa com o jogo base, a expansão prelúdio e bônus exclusivo da Amazing Games.
+              </p>
+
+              <div class="p-4 rounded-2xl bg-[#0b0b14] border border-white/10 mb-6 flex items-baseline justify-between">
+                <div>
+                  <span class="text-xs text-[#94a3b8] block">Valor Oficial Amazing Store</span>
+                  <span class="font-display font-bold text-4xl text-[#f8fafc]">R$ 199,90</span>
+                </div>
+                <span class="text-xs text-[#06b6d4] font-semibold">R$ 179,91 c/ AMAZING10</span>
+              </div>
+
+              <ul class="space-y-3 mb-8 text-sm text-[#cbd5e1]">
+                <li class="flex items-start gap-3">
+                  <span class="mt-0.5 w-5 h-5 rounded-full bg-[#3b82f6]/20 border border-[#3b82f6]/50 text-[#3b82f6] flex items-center justify-center shrink-0">✓</span>
+                  <span>Jogo Base Completo <strong>The Last of Us</strong></span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <span class="mt-0.5 w-5 h-5 rounded-full bg-[#3b82f6]/20 border border-[#3b82f6]/50 text-[#3b82f6] flex items-center justify-center shrink-0">✓</span>
+                  <span>Expansão <strong>Left Behind</strong> (História de Ellie e Riley)</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <span class="mt-0.5 w-5 h-5 rounded-full bg-[#3b82f6]/20 border border-[#3b82f6]/50 text-[#3b82f6] flex items-center justify-center shrink-0">✓</span>
+                  <span>Trilha Sonora Digital de Gustavo Santaolalla</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <span class="mt-0.5 w-5 h-5 rounded-full bg-[#3b82f6]/20 border border-[#3b82f6]/50 text-[#3b82f6] flex items-center justify-center shrink-0">✓</span>
+                  <span>Skin Exclusiva <strong>Amazing Neon</strong> para mochila</span>
+                </li>
+              </ul>
+            </div>
+
+            <button
+              type="button"
+              data-open-modal="padrao"
+              class="btn-glass-secondary w-full py-4 rounded-2xl font-bold text-sm sm:text-base tracking-wide cursor-pointer"
+            >
+              Comprar Edição Padrão — R$ 199,90
+            </button>
+          </div>
+
+          <!-- CARD 2: EDIÇÃO COLECIONADOR VAGA-LUME (DESTAQUE MAIS VENDIDA) -->
+          <div class="glass-panel p-7 sm:p-9 flex flex-col justify-between border-[#8b5cf6]/65 shadow-[0_0_50px_rgba(139,92,246,0.24)] relative overflow-hidden">
+            <div class="absolute -top-16 -right-16 w-48 h-48 rounded-full bg-[#8b5cf6]/25 blur-3xl pointer-events-none"></div>
+
+            <div>
+              <div class="flex items-center justify-between gap-3 mb-5">
+                <span class="px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-gradient-to-r from-[#7c3aed] via-[#a855f7] to-[#3b82f6] text-white shadow-[0_0_18px_rgba(139,92,246,0.5)]">
+                  ★ MAIS VENDIDA
+                </span>
+                <span class="text-xs font-mono text-[#06b6d4]">DELUXE COLECIONADOR</span>
+              </div>
+
+              <h3 class="font-display font-bold text-3xl text-[#f8fafc] mb-2">
+                Edição Colecionador Vaga-Lume
+              </h3>
+              <p class="text-sm text-[#cbd5e1] mb-6">
+                O pacote definitivo para colecionadores e fãs da franquia, com itens digitais exclusivos e pontos de fidelidade Amazing Games.
+              </p>
+
+              <div class="p-4 rounded-2xl bg-[#0b0b14] border border-[#8b5cf6]/40 mb-6 flex items-baseline justify-between">
+                <div>
+                  <span class="text-xs text-[#94a3b8] block">Valor Oficial Amazing Store</span>
+                  <span class="font-display font-bold text-4xl text-neon-gradient">R$ 299,90</span>
+                </div>
+                <span class="text-xs text-[#06b6d4] font-semibold">R$ 269,91 c/ AMAZING10</span>
+              </div>
+
+              <ul class="space-y-3 mb-8 text-sm text-[#f8fafc]">
+                <li class="flex items-start gap-3">
+                  <span class="mt-0.5 w-5 h-5 rounded-full bg-[#8b5cf6]/25 border border-[#06b6d4]/60 text-[#06b6d4] flex items-center justify-center shrink-0">✓</span>
+                  <span><strong>Tudo da Edição Padrão</strong> (Jogo Base + Left Behind + Trilha + Skin)</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <span class="mt-0.5 w-5 h-5 rounded-full bg-[#8b5cf6]/25 border border-[#06b6d4]/60 text-[#06b6d4] flex items-center justify-center shrink-0">✓</span>
+                  <span><strong>Artbook Digital Oficial</strong> de 120 páginas em alta resolução</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <span class="mt-0.5 w-5 h-5 rounded-full bg-[#8b5cf6]/25 border border-[#06b6d4]/60 text-[#06b6d4] flex items-center justify-center shrink-0">✓</span>
+                  <span>Desbloqueio Antecipado de <strong>Habilidades de Criação</strong></span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <span class="mt-0.5 w-5 h-5 rounded-full bg-[#8b5cf6]/25 border border-[#06b6d4]/60 text-[#06b6d4] flex items-center justify-center shrink-0">✓</span>
+                  <span>Wallpaper Animado 4K exclusivo para Desktop</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <span class="mt-0.5 w-5 h-5 rounded-full bg-[#8b5cf6]/25 border border-[#06b6d4]/60 text-[#06b6d4] flex items-center justify-center shrink-0">✓</span>
+                  <span><strong>+500 Pontos de Fidelidade Amazing Games</strong> na sua conta</span>
+                </li>
+              </ul>
+            </div>
+
+            <button
+              type="button"
+              data-open-modal="colecionador"
+              class="btn-neon-primary w-full py-4 rounded-2xl font-bold text-sm sm:text-base tracking-wide cursor-pointer"
+            >
+              Comprar Edição Colecionador — R$ 299,90
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ========================================================================
+       9. FOOTER CORPORATIVO AMAZING GAMES ENTERTAINMENT
+       ======================================================================== -->
+  <footer class="bg-[#0b0b14] border-t border-[#8b5cf6]/25 pt-14 pb-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 pb-10 border-b border-white/10">
+        <!-- Identidade Institucional Amazing Games -->
+        <div class="md:col-span-5 space-y-4">
+          <div class="flex items-center gap-3">
+            <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-[#7c3aed]/40 to-[#3b82f6]/35 border border-[#8b5cf6]/45 flex items-center justify-center">
+              <svg class="w-5 h-5" viewBox="0 0 32 32" fill="none">
+                <polygon points="16,2 29,9.5 29,22.5 16,30 3,22.5 3,9.5" stroke="#06b6d4" stroke-width="2.2" />
+                <path d="M16 7L23.5 22H19.6L16 14.4L12.4 22H8.5L16 7Z" fill="#a855f7" />
+              </svg>
+            </div>
+            <div>
+              <span class="font-display font-bold text-xl tracking-wider text-[#f8fafc] block leading-none">
+                AMAZING <span class="text-neon-gradient">GAMES</span>
+              </span>
+              <span class="text-[10px] uppercase tracking-widest text-[#94a3b8]">Entertainment & Digital Store</span>
+            </div>
+          </div>
+          <p class="text-sm text-[#94a3b8] max-w-sm leading-relaxed">
+            Distribuidora digital oficial de grandes sucessos AAA. Ativação imediata, servidores dedicados de alta velocidade e garantia blindada ao jogador.
+          </p>
+          <div class="flex flex-wrap gap-2 pt-1">
+            <span class="px-2.5 py-1 rounded-lg bg-[#121222] border border-[#06b6d4]/30 text-[11px] font-semibold text-[#06b6d4]">SSL 256-Bit Seguro</span>
+            <span class="px-2.5 py-1 rounded-lg bg-[#121222] border border-[#8b5cf6]/30 text-[11px] font-semibold text-[#a855f7]">Ativação Imediata</span>
+            <span class="px-2.5 py-1 rounded-lg bg-[#121222] border border-[#3b82f6]/30 text-[11px] font-semibold text-[#3b82f6]">Reembolso 14 Dias</span>
+          </div>
+        </div>
+
+        <!-- Links Rápidos -->
+        <div class="md:col-span-4 space-y-3">
+          <h4 class="text-xs font-bold uppercase tracking-widest text-[#06b6d4]">Navegação Rápida</h4>
+          <ul class="grid grid-cols-2 gap-2 text-sm text-[#94a3b8]">
+            <li><a href="#inicio" class="hover:text-white transition-colors">Início</a></li>
+            <li><a href="#historia" class="hover:text-white transition-colors">História</a></li>
+            <li><a href="#universo" class="hover:text-white transition-colors">Universo & Lore</a></li>
+            <li><a href="#personagens" class="hover:text-white transition-colors">Personagens</a></li>
+            <li><a href="#mecanicas" class="hover:text-white transition-colors">Mecânicas</a></li>
+            <li><a href="#edicoes" class="hover:text-white transition-colors">Edições Oficiais</a></li>
+          </ul>
+        </div>
+
+        <!-- Classificação Indicativa -->
+        <div class="md:col-span-3 space-y-3">
+          <h4 class="text-xs font-bold uppercase tracking-widest text-[#a855f7]">Classificação Indicativa</h4>
+          <div class="flex items-center gap-3 p-3.5 rounded-xl bg-[#121222] border border-[#8b5cf6]/30">
+            <div class="w-11 h-11 rounded-lg bg-gradient-to-br from-[#7c3aed] to-[#1d4ed8] flex items-center justify-center font-display font-bold text-xl text-white shrink-0">
+              18+
+            </div>
+            <div class="text-xs text-[#cbd5e1] leading-snug">
+              Não recomendado para menores de 18 anos. Contém violência extrema e linguagem imprópria.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#94a3b8]">
+        <p>© 2026 Amazing Games Entertainment. Todos os direitos reservados.</p>
+        <p class="text-[#cbd5e1]">
+          Distribuição Digital Oficial • <span class="text-[#06b6d4]">Amazing Games Launcher</span> & <span class="text-[#a855f7]">Console Digital</span>
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========================================================================
+       MODAL DE COMPRA INTERATIVO (AMAZING GAMES CHECKOUT)
+       ======================================================================== -->
+  <div
+    id="reservation-modal"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="modal-heading"
+    class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-[#05050a]/88 backdrop-blur-md"
+  >
+    <div class="relative w-full max-w-lg rounded-3xl bg-[#121222] border border-[#8b5cf6]/55 shadow-[0_0_65px_rgba(139,92,246,0.38)] overflow-hidden animate-content-swap max-h-[92vh] overflow-y-auto">
+      <!-- Barra Neon Superior -->
+      <div class="h-1.5 w-full bg-gradient-to-r from-[#7c3aed] via-[#a855f7] to-[#06b6d4]"></div>
+
+      <!-- Cabeçalho do Modal -->
+      <div class="flex items-center justify-between px-6 pt-5 pb-4 border-b border-white/10">
+        <div>
+          <span class="text-[11px] font-bold uppercase tracking-widest text-[#06b6d4]">Amazing Games Checkout Oficial</span>
+          <h3 id="modal-heading" class="font-display font-bold text-2xl text-[#f8fafc]">Finalizar Pedido Digital</h3>
+        </div>
+        <button
+          id="close-modal-btn"
+          type="button"
+          aria-label="Fechar janela de compra"
+          class="p-2 rounded-xl bg-[#0b0b14] border border-white/10 text-[#94a3b8] hover:text-white hover:border-[#06b6d4] transition-colors cursor-pointer"
+        >
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+
+      <!-- Etapa 1: Formulário de Compra -->
+      <form id="reservation-form" class="p-6 space-y-4">
+        <!-- Resumo da Edição Selecionada + Alternador -->
+        <div class="p-4 rounded-2xl bg-[#0b0b14] border border-[#8b5cf6]/35 flex items-center justify-between gap-4">
+          <div>
+            <div class="text-xs text-[#94a3b8]">Edição na Amazing Store</div>
+            <div id="modal-edition-name" class="font-display font-bold text-lg text-[#f8fafc]">Edição Colecionador Vaga-Lume</div>
+            <button
+              id="modal-toggle-edition"
+              type="button"
+              class="text-xs text-[#06b6d4] hover:underline mt-0.5 cursor-pointer"
+            >
+              Alternar edição (Padrão / Colecionador)
+            </button>
+          </div>
+          <div class="text-right">
+            <div id="modal-original-price" class="hidden text-xs line-through text-[#94a3b8]">R$ 299,90</div>
+            <div id="modal-edition-price" class="font-display font-bold text-2xl text-neon-gradient">R$ 299,90</div>
+            <div id="modal-coupon-status" class="text-[11px] text-[#94a3b8]">Cupom disponível: AMAZING10</div>
+          </div>
+        </div>
+
+        <!-- Seleção de Plataforma -->
+        <div>
+          <label class="block text-xs font-semibold uppercase tracking-wider text-[#cbd5e1] mb-2">Plataforma de Ativação</label>
+          <div class="grid grid-cols-2 gap-2.5">
+            <label class="cursor-pointer">
+              <input type="radio" name="platform" value="PC — Amazing Games Launcher" checked class="peer sr-only" />
+              <div class="p-3 text-center rounded-xl bg-[#0b0b14] border border-white/15 text-xs font-semibold text-[#94a3b8] peer-checked:border-[#06b6d4] peer-checked:text-[#f8fafc] peer-checked:bg-[#3b82f6]/15 transition-all">
+                PC — Amazing Games Launcher
+              </div>
+            </label>
+            <label class="cursor-pointer">
+              <input type="radio" name="platform" value="Console Digital" class="peer sr-only" />
+              <div class="p-3 text-center rounded-xl bg-[#0b0b14] border border-white/15 text-xs font-semibold text-[#94a3b8] peer-checked:border-[#06b6d4] peer-checked:text-[#f8fafc] peer-checked:bg-[#3b82f6]/15 transition-all">
+                Console Digital
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <!-- Campo de Cupom Funcional (AMAZING10) -->
+        <div>
+          <label for="coupon-input" class="block text-xs font-semibold uppercase tracking-wider text-[#cbd5e1] mb-1.5">Cupom Promocional Amazing Games</label>
+          <div class="flex gap-2">
+            <input
+              id="coupon-input"
+              type="text"
+              placeholder="Digite AMAZING10"
+              class="flex-1 px-3.5 py-2.5 rounded-xl bg-[#0b0b14] border border-white/15 text-sm font-mono uppercase text-[#f8fafc] placeholder-[#94a3b8]/50 focus:outline-none focus:border-[#06b6d4] transition-colors"
+            />
+            <button
+              id="apply-coupon-btn"
+              type="button"
+              class="px-4 py-2.5 rounded-xl text-xs font-bold bg-[#8b5cf6]/25 border border-[#8b5cf6]/50 text-[#f8fafc] hover:bg-[#8b5cf6]/40 transition-colors cursor-pointer"
+            >
+              Aplicar
+            </button>
+          </div>
+          <p id="coupon-feedback" class="hidden text-xs mt-1.5"></p>
+        </div>
+
+        <!-- Campos de Nome e E-mail -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+          <div>
+            <label for="buyer-name" class="block text-xs font-semibold text-[#cbd5e1] mb-1.5">Seu Nome Completo</label>
+            <input
+              id="buyer-name"
+              type="text"
+              required
+              placeholder="Ex: Joel Miller"
+              class="w-full px-3.5 py-2.5 rounded-xl bg-[#0b0b14] border border-white/15 text-sm text-[#f8fafc] placeholder-[#94a3b8]/50 focus:outline-none focus:border-[#06b6d4] transition-colors"
+            />
+          </div>
+          <div>
+            <label for="buyer-email" class="block text-xs font-semibold text-[#cbd5e1] mb-1.5">E-mail para Entrega</label>
+            <input
+              id="buyer-email"
+              type="email"
+              required
+              placeholder="jogador@amazinggames.com"
+              class="w-full px-3.5 py-2.5 rounded-xl bg-[#0b0b14] border border-white/15 text-sm text-[#f8fafc] placeholder-[#94a3b8]/50 focus:outline-none focus:border-[#06b6d4] transition-colors"
+            />
+          </div>
+        </div>
+
+        <!-- Mensagem de Erro Inline -->
+        <p id="modal-error-msg" class="hidden text-xs text-rose-400 bg-rose-500/10 border border-rose-500/30 rounded-xl px-3 py-2"></p>
+
+        <button
+          type="submit"
+          class="btn-neon-primary w-full py-3.5 rounded-2xl font-bold text-sm sm:text-base tracking-wide cursor-pointer"
+        >
+          Finalizar Compra na Amazing Games
+        </button>
+      </form>
+
+      <!-- Etapa 2: Confirmação e Chave Oficial Amazing Games -->
+      <div id="reservation-success" class="hidden p-6 sm:p-8 text-center space-y-5">
+        <div class="w-16 h-16 mx-auto rounded-2xl bg-gradient-to-br from-[#8b5cf6]/30 to-[#06b6d4]/30 border border-[#06b6d4] flex items-center justify-center text-[#06b6d4] shadow-[0_0_28px_rgba(6,182,212,0.4)]">
+          <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+          </svg>
+        </div>
+
+        <div>
+          <span class="text-xs font-bold uppercase tracking-widest text-[#06b6d4]">Pedido Aprovado • Amazing Games Store</span>
+          <h4 class="font-display font-bold text-3xl text-[#f8fafc] mt-1">Chave Gerada com Sucesso!</h4>
+          <p id="success-summary" class="text-sm text-[#cbd5e1] mt-2 leading-relaxed">
+            Sua cópia oficial foi liberada.
+          </p>
+        </div>
+
+        <!-- Chave Oficial Amazing Games com Botão de Copiar -->
+        <div class="p-4 rounded-2xl bg-[#0b0b14] border border-[#8b5cf6]/45 flex items-center justify-between gap-3">
+          <div class="text-left">
+            <div class="text-[10px] uppercase tracking-wider text-[#94a3b8]">Chave de Ativação Oficial Amazing Games</div>
+            <div id="voucher-code" class="font-mono font-bold text-base sm:text-lg text-[#06b6d4]">AMGZ-TLOU-8492-1047</div>
+          </div>
+          <button
+            id="copy-voucher-btn"
+            type="button"
+            class="px-3.5 py-2 rounded-xl text-xs font-semibold bg-[#8b5cf6]/25 border border-[#8b5cf6]/50 text-[#f8fafc] hover:bg-[#8b5cf6]/40 transition-colors cursor-pointer shrink-0"
+          >
+            Copiar Chave
+          </button>
+        </div>
+
+        <button
+          id="done-modal-btn"
+          type="button"
+          class="btn-glass-secondary w-full py-3 rounded-2xl font-semibold text-sm cursor-pointer"
+        >
+          Concluir e Voltar à Loja
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       ARQUITETURA JAVASCRIPT PURO (ES6+ MODULAR)
+       ======================================================================== -->
+  <script>
+    /**
+     * 1. MOTOR DE PARTÍCULAS DE ESPOROS CORDYCEPS (HTML5 CANVAS)
+     */
+    class SporeParticleEngine {
+      constructor(canvasId) {
+        this.canvas = document.getElementById(canvasId);
+        if (!this.canvas) return;
+        this.ctx = this.canvas.getContext('2d');
+        this.particles = [];
+        this.pointer = { x: null, y: null, radius: 140 };
+        this.palette = ['#8b5cf6', '#6d28d9', '#3b82f6', '#06b6d4'];
+        this.animationFrameId = null;
+
+        this.init();
+      }
+
+      init() {
+        try {
+          this.resize();
+          this.createParticles();
+          this.bindEvents();
+          this.animate();
+        } catch (err) {
+          console.error('Erro ao inicializar SporeParticleEngine:', err);
+        }
+      }
+
+      resize() {
+        const dpr = Math.min(window.devicePixelRatio || 1, 2);
+        const rect = this.canvas.parentElement.getBoundingClientRect();
+        this.width = rect.width;
+        this.height = rect.height;
+        this.canvas.width = this.width * dpr;
+        this.canvas.height = this.height * dpr;
+        this.ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      }
+
+      createParticles() {
+        this.particles = [];
+        // Densidade responsiva conforme largura da tela
+        const count = Math.min(Math.floor((this.width * this.height) / 14000), 85);
+
+        for (let i = 0; i < count; i++) {
+          const radius = Math.random() * 2.6 + 0.9;
+          this.particles.push({
+            x: Math.random() * this.width,
+            y: Math.random() * this.height,
+            radius,
+            baseAlpha: Math.random() * 0.55 + 0.25,
+            pulseSpeed: Math.random() * 0.02 + 0.008,
+            pulsePhase: Math.random() * Math.PI * 2,
+            vx: (Math.random() - 0.5) * 0.45,
+            vy: -(Math.random() * 0.45 + 0.15), // Flutuação ascendente orgânica
+            color: this.palette[Math.floor(Math.random() * this.palette.length)]
+          });
+        }
+      }
+
+      bindEvents() {
+        window.addEventListener('resize', () => {
+          this.resize();
+          this.createParticles();
+        });
+
+        // Interatividade com mouse e toque na Hero Section
+        const heroSection = this.canvas.parentElement;
+        heroSection.addEventListener('mousemove', (e) => {
+          const rect = this.canvas.getBoundingClientRect();
+          this.pointer.x = e.clientX - rect.left;
+          this.pointer.y = e.clientY - rect.top;
+        });
+
+        heroSection.addEventListener('touchmove', (e) => {
+          if (e.touches.length > 0) {
+            const rect = this.canvas.getBoundingClientRect();
+            this.pointer.x = e.touches[0].clientX - rect.left;
+            this.pointer.y = e.touches[0].clientY - rect.top;
+          }
+        }, { passive: true });
+
+        heroSection.addEventListener('mouseleave', () => {
+          this.pointer.x = null;
+          this.pointer.y = null;
+        });
+      }
+
+      animate() {
+        this.ctx.clearRect(0, 0, this.width, this.height);
+
+        for (let i = 0; i < this.particles.length; i++) {
+          const p = this.particles[i];
+          p.x += p.vx;
+          p.y += p.vy;
+          p.pulsePhase += p.pulseSpeed;
+
+          // Repulsão suave ao aproximar o cursor/dedo
+          if (this.pointer.x !== null && this.pointer.y !== null) {
+            const dx = p.x - this.pointer.x;
+            const dy = p.y - this.pointer.y;
+            const dist = Math.hypot(dx, dy);
+            if (dist < this.pointer.radius && dist > 0) {
+              const force = (this.pointer.radius - dist) / this.pointer.radius;
+              p.x += (dx / dist) * force * 1.8;
+              p.y += (dy / dist) * force * 1.8;
+            }
+          }
+
+          // Reposicionamento contínuo nas bordas
+          if (p.y < -10) p.y = this.height + 10;
+          if (p.x < -10) p.x = this.width + 10;
+          if (p.x > this.width + 10) p.x = -10;
+
+          const currentAlpha = Math.max(0.1, p.baseAlpha + Math.sin(p.pulsePhase) * 0.22);
+
+          // Desenho do esporo com halo luminoso
+          this.ctx.save();
+          this.ctx.globalAlpha = currentAlpha;
+          this.ctx.beginPath();
+          this.ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+          this.ctx.fillStyle = p.color;
+          this.ctx.shadowBlur = 12;
+          this.ctx.shadowColor = p.color;
+          this.ctx.fill();
+          this.ctx.restore();
+        }
+
+        this.animationFrameId = requestAnimationFrame(() => this.animate());
+      }
+    }
+
+    /**
+     * 2. CONTROLADOR DA LINHA DO TEMPO INTERATIVA ('A HISTÓRIA')
+     * Inclui abas, botões Anterior/Próximo e suporte às setas do teclado.
+     */
+    class StoryTimelineController {
+      constructor() {
+        this.chapters = [
+          {
+            badge: 'Setembro de 2013 • Austin, Texas',
+            threat: 'Ameaça: Mutação Cordyceps',
+            title: 'O Dia do Surto (2013)',
+            description:
+              'Em Austin, Texas, uma mutação fulminante do fungo parasita Cordyceps salta para os seres humanos e destrói a sociedade moderna em questão de horas. Em meio ao pânico das ruas em chamas e ao colapso das forças de segurança, Joel sofre uma perda irreparável que moldará sua alma pelos próximos vinte anos.',
+            quote: '“Em uma única noite, o mundo que conhecíamos desapareceu — e tudo o que restou foi a luta para amanhecer vivo.”',
+            code: 'ACT-2013-01',
+            location: 'Austin, Texas',
+            keyItem: 'Noite do Colapso',
+            iconSvg: `
+              <div class="w-28 h-28 rounded-3xl bg-gradient-to-br from-[#7c3aed]/30 to-[#06b6d4]/20 border border-[#8b5cf6]/50 flex items-center justify-center shadow-[0_0_40px_rgba(139,92,246,0.35)]">
+                <svg class="w-14 h-14 text-[#06b6d4]" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                </svg>
+              </div>`
+          },
+          {
+            badge: '2033 • Zona de Quarentena de Boston',
+            threat: 'Ameaça: Lei Marcial da FEDRA',
+            title: 'A Zona de Quarentena (2033)',
+            description:
+              'Vinte anos depois, sob a lei marcial implacável da FEDRA em Boston, Joel e sua parceira Tess sobrevivem como contrabandistas endurecidos no mercado negro. Ao tentarem recuperar um carregamento de armas roubadas, seus caminhos cruzam com Marlene, líder ferida da resistência Vaga-Lume.',
+            quote: '“Dentro dos muros você obedece às rações da FEDRA; fora deles, você vira alimento para os infectados.”',
+            code: 'ACT-2033-02',
+            location: 'ZQ Boston, MA',
+            keyItem: 'Contrato com Marlene',
+            iconSvg: `
+              <div class="w-28 h-28 rounded-3xl bg-gradient-to-br from-[#8b5cf6]/30 to-[#3b82f6]/20 border border-[#8b5cf6]/50 flex items-center justify-center shadow-[0_0_40px_rgba(139,92,246,0.35)]">
+                <svg class="w-14 h-14 text-[#a855f7]" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                </svg>
+              </div>`
+          },
+          {
+            badge: 'A Chave da Cura • Imunidade Única',
+            threat: 'Ameaça: Estaladores & Patrulhas',
+            title: 'A Carga Imune',
+            description:
+              'Ellie, uma garota de 14 anos nascida após o colapso, esconde o maior segredo da humanidade: mordida há semanas, ela não se transformou. Escoltá-la em segredo através do país até os laboratórios dos Vaga-Lumes pode representar a única chance real de sintetizar uma vacina.',
+            quote: '“Depois de tudo o que passamos... tudo o que eu fiz... não pode ter sido em vão.”',
+            code: 'ACT-2033-03',
+            location: 'Capitólio & Lincoln',
+            keyItem: 'Imunidade ao Cordyceps',
+            iconSvg: `
+              <div class="w-28 h-28 rounded-3xl bg-gradient-to-br from-[#3b82f6]/30 to-[#06b6d4]/25 border border-[#06b6d4]/50 flex items-center justify-center shadow-[0_0_40px_rgba(6,182,212,0.35)]">
+                <svg class="w-14 h-14 text-[#06b6d4]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                  <circle cx="12" cy="7" r="2.2" fill="currentColor" />
+                  <path d="M12 9.5v9" />
+                  <path d="M12 11c-4.5-2.5-8.5-1.2-9 2.2 3.2 1.2 6.5.5 9-2.2z" />
+                  <path d="M12 11c4.5-2.5 8.5-1.2 9 2.2-3.2 1.2-6.5.5-9-2.2z" />
+                </svg>
+              </div>`
+          },
+          {
+            badge: 'Verão • Outono • Inverno • Primavera',
+            threat: 'Ameaça: Caçadores, Hordas & Dilema Moral',
+            title: 'As Quatro Estações',
+            description:
+              'De Pittsburgh ao Colorado, passando pelo rigor mortal do inverno até a primavera em Salt Lake City, Joel e Ellie atravessam os Estados Unidos em ruínas. Em um mundo onde humanos hostis são tão perigosos quanto os infectados, o laço entre os dois redefine o próprio significado de sobrevivência.',
+            quote: '“Não importa o que aconteça, você continua encontrando algo pelo qual lutar.”',
+            code: 'ACT-2034-04',
+            location: 'Jackson & Salt Lake City',
+            keyItem: 'Vínculo Inquebrável',
+            iconSvg: `
+              <div class="w-28 h-28 rounded-3xl bg-gradient-to-br from-[#7c3aed]/35 to-[#3b82f6]/25 border border-[#3b82f6]/50 flex items-center justify-center shadow-[0_0_40px_rgba(59,130,246,0.35)]">
+                <svg class="w-14 h-14 text-[#3b82f6]" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
+                </svg>
+              </div>`
+          }
+        ];
+
+        this.currentIndex = 0;
+        this.tabs = document.querySelectorAll('.story-tab');
+        this.panel = document.getElementById('story-panel');
+        this.prevBtn = document.getElementById('story-prev-btn');
+        this.nextBtn = document.getElementById('story-next-btn');
+
+        this.bindEvents();
+      }
+
+      bindEvents() {
+        this.tabs.forEach((tab) => {
+          tab.addEventListener('click', () => {
+            this.selectChapter(Number(tab.dataset.chapter));
+          });
+        });
+
+        this.prevBtn?.addEventListener('click', () => {
+          this.selectChapter((this.currentIndex - 1 + this.chapters.length) % this.chapters.length);
+        });
+
+        this.nextBtn?.addEventListener('click', () => {
+          this.selectChapter((this.currentIndex + 1) % this.chapters.length);
+        });
+
+        // Suporte a navegação por setas do teclado quando não está digitando em inputs
+        document.addEventListener('keydown', (e) => {
+          const activeTag = document.activeElement?.tagName;
+          if (activeTag === 'INPUT' || activeTag === 'TEXTAREA') return;
+          const modal = document.getElementById('reservation-modal');
+          if (modal && !modal.classList.contains('hidden')) return;
+
+          if (e.key === 'ArrowLeft') {
+            this.selectChapter((this.currentIndex - 1 + this.chapters.length) % this.chapters.length);
+          } else if (e.key === 'ArrowRight') {
+            this.selectChapter((this.currentIndex + 1) % this.chapters.length);
+          }
+        });
+      }
+
+      selectChapter(index) {
+        if (index === this.currentIndex) return;
+        this.currentIndex = index;
+        const data = this.chapters[index];
+
+        this.tabs.forEach((tab, idx) => {
+          const isActive = idx === index;
+          tab.classList.toggle('active', isActive);
+          tab.setAttribute('aria-selected', String(isActive));
+        });
+
+        this.panel.classList.remove('animate-content-swap');
+        void this.panel.offsetWidth;
+        this.panel.classList.add('animate-content-swap');
+
+        document.getElementById('story-badge').textContent = data.badge;
+        document.getElementById('story-threat').textContent = data.threat;
+        document.getElementById('story-title').textContent = data.title;
+        document.getElementById('story-description').textContent = data.description;
+        document.getElementById('story-quote').textContent = data.quote;
+        document.getElementById('story-counter').textContent = `0${index + 1} / 0${this.chapters.length}`;
+        document.getElementById('story-code').textContent = data.code;
+        document.getElementById('story-location').textContent = data.location;
+        document.getElementById('story-key-item').textContent = data.keyItem;
+        document.getElementById('story-artwork').innerHTML = data.iconSvg;
+      }
+    }
+
+    /**
+     * 3. CONTROLADOR DO BESTIÁRIO INTERATIVO (ESTÁGIOS DO CORDYCEPS)
+     */
+    class BestiaryController {
+      constructor() {
+        this.stages = [
+          {
+            badge: 'Estágio 1 • 2 Dias a 2 Semanas de Infecção',
+            sense: 'Sensor Primário: Visão & Audição',
+            title: 'Corredores (Runners)',
+            behavior:
+              'Recém-infectados que ainda preservam traços humanos e visão funcional. Extremamente velozes e impulsivos, atacam em bandos desordenados assim que avistam uma presa, alertando outros infectados próximos com gritos agudos.',
+            weakness:
+              'Vulneráveis a golpes corpo a corpo rápidos, estrangulamento furtivo pelas costas e tiros precisos na cabeça com armas leves.',
+            lethality: 45,
+            speed: 92,
+            armor: 15
+          },
+          {
+            badge: 'Estágio 2 • 2 Semanas a 1 Ano de Infecção',
+            sense: 'Sensor Primário: Emboscada Furtiva',
+            title: 'Perseguidores (Stalkers)',
+            behavior:
+              'Furtivos e imprevisíveis, possuem início de crescimento fúngico no rosto que compromete parcialmente um dos olhos. Escondem-se silenciosamente atrás de esquinas e coberturas, esperando o momento em que você vira as costas para atacar.',
+            weakness:
+              'Use o Modo Escuta com atenção ao som de passos rápidos; espingardas de curto alcance e armadilhas são letais quando avançam.',
+            lethality: 65,
+            speed: 85,
+            armor: 30
+          },
+          {
+            badge: 'Estágio 3 • Mais de 1 Ano de Infecção',
+            sense: 'Sensor Primário: Ecolocalização Sonora',
+            title: 'Estaladores (Clickers)',
+            behavior:
+              'Completamente cegos devido às placas fúngicas que romperam o crânio, emitem estalos agudos para mapear o ambiente por ecolocalização. Possuem força sobre-humana e seu agarre é instantaneamente fatal.',
+            weakness:
+              'Incapazes de enxergar: mova-se agachado em silêncio absoluto, distraia-os arremessando garrafas longe ou use uma faca improvisada.',
+            lethality: 95,
+            speed: 55,
+            armor: 68
+          },
+          {
+            badge: 'Estágio 4 • Décadas de Infecção',
+            sense: 'Sensor Primário: Ecolocalização Pesada',
+            title: 'Baiacus (Bloaters)',
+            behavior:
+              'Anos de infecção contínua cobrem todo o corpo com uma espessa armadura fúngica blindada. Lentos porém devastadores, arrancam bolsas de micotoxinas do próprio corpo para arremessar nuvens de esporos corrosivos à distância.',
+            weakness:
+              'Altamente vulneráveis ao fogo (Coquetéis Molotov e Lança-Chamas), que derretem sua carapaça fúngica e expõem pontos críticos.',
+            lethality: 100,
+            speed: 35,
+            armor: 98
+          }
+        ];
+
+        this.tabs = document.querySelectorAll('.bestiary-tab');
+        this.panel = document.getElementById('bestiary-panel');
+        this.tabs.forEach((btn) => {
+          btn.addEventListener('click', () => this.selectStage(Number(btn.dataset.stage)));
+        });
+      }
+
+      selectStage(idx) {
+        const s = this.stages[idx];
+        if (!s) return;
+
+        this.tabs.forEach((t, i) => {
+          const active = i === idx;
+          t.classList.toggle('active', active);
+          t.classList.toggle('text-[#f8fafc]', active);
+          t.classList.toggle('text-[#cbd5e1]', !active);
+        });
+
+        this.panel.classList.remove('animate-content-swap');
+        void this.panel.offsetWidth;
+        this.panel.classList.add('animate-content-swap');
+
+        document.getElementById('stage-badge').textContent = s.badge;
+        document.getElementById('stage-sense').textContent = s.sense;
+        document.getElementById('stage-title').textContent = s.title;
+        document.getElementById('stage-behavior').textContent = s.behavior;
+        document.getElementById('stage-weakness').textContent = s.weakness;
+
+        document.getElementById('stage-lethality-val').textContent = `${s.lethality}%`;
+        document.getElementById('stage-lethality-bar').style.width = `${s.lethality}%`;
+        document.getElementById('stage-speed-val').textContent = `${s.speed}%`;
+        document.getElementById('stage-speed-bar').style.width = `${s.speed}%`;
+        document.getElementById('stage-armor-val').textContent = `${s.armor}%`;
+        document.getElementById('stage-armor-bar').style.width = `${s.armor}%`;
+      }
+    }
+
+    /**
+     * 4. CONTROLADOR DO DOSSIÊ DE PERSONAGENS ICÔNICOS
+     */
+    class CharacterDossierController {
+      constructor() {
+        this.characters = [
+          {
+            name: 'Joel Miller',
+            role: 'Protagonista • Contrabandista de Boston',
+            faction: 'Sobrevivente Independente',
+            quote: '“Você luta para sobreviver, custe o que custar. É assim que continuamos respirando.”',
+            bio: 'Endurecido por vinte anos de brutalidade após perder sua filha Sarah na noite do surto, Joel tornou-se um sobrevivente pragmático e implacável nas ruas de Boston. Ao aceitar escoltar Ellie através do país, suas muralhas emocionais começam a ruir, transformando um contrato frio no vínculo paternal mais profundo de sua vida.',
+            plotRole: 'Guardião principal de Ellie durante toda a travessia dos Estados Unidos, combinando força bruta, instinto tático e experiência de sobrevivência.',
+            stats: { combat: 95, stealth: 86, resilience: 98 },
+            svg: `<svg class="w-14 h-14 text-[#a855f7]" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" /></svg>`
+          },
+          {
+            name: 'Ellie Williams',
+            role: 'Protagonista • A Chave da Humanidade',
+            faction: 'Imune ao Cordyceps',
+            quote: '“Todo mundo com quem eu já me importei morreu ou me deixou. Todo mundo — menos você.”',
+            bio: 'Nascida após o colapso da civilização e criada dentro de uma escola militar da FEDRA, Ellie é corajosa, perspicaz e apaixonada por livros de piadas e astronomia. Mordida por um infectado sem jamais desenvolver sintomas, ela carrega nos ombros o peso de ser a única esperança conhecida de cura.',
+            plotRole: 'Catalisadora emocional e biológica da jornada; evolui de protegida curiosa para uma sobrevivente letal e indispensável ao lado de Joel.',
+            stats: { combat: 78, stealth: 96, resilience: 94 },
+            svg: `<svg class="w-14 h-14 text-[#06b6d4]" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>`
+          },
+          {
+            name: 'Tess Servopoulos',
+            role: 'Aliada • Estrategista de Boston',
+            faction: 'Contrabandista Veterana',
+            quote: '“Nós somos pessoas ruins, Joel. Já faz muito tempo que somos assim.”',
+            bio: 'Parceira de negócios e sobrevivência de Joel na Zona de Quarentena de Boston. Fria, calculista e respeitada no submundo do contrabando, Tess possui a visão estratégica que mantém ambos vivos até o encontro decisivo com os Vaga-Lumes.',
+            plotRole: 'Peça-chave no início da missão: convence Joel a honrar o compromisso de levar Ellie até os Vaga-Lumes após descobrir a verdadeira imunidade da garota.',
+            stats: { combat: 88, stealth: 84, resilience: 90 },
+            svg: `<svg class="w-14 h-14 text-[#3b82f6]" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>`
+          },
+          {
+            name: 'Tommy Miller',
+            role: 'Aliado • Irmão de Joel',
+            faction: 'Comunidade de Jackson',
+            quote: '“Existem coisas pelas quais vale a pena lutar além de apenas sobreviver.”',
+            bio: 'Irmão mais novo de Joel e ex-membro idealista dos Vaga-Lumes. Após romper com os métodos extremos da milícia rebelde, Tommy ajudou a erguer uma comunidade fortificada, pacífica e autossustentável em Jackson, Wyoming, alimentada por uma usina hidrelétrica.',
+            plotRole: 'Representa a prova viva de que a civilização pode ser reconstruída com humanidade, oferecendo refúgio e apoio crucial na reta final da viagem.',
+            stats: { combat: 91, stealth: 85, resilience: 92 },
+            svg: `<svg class="w-14 h-14 text-[#8b5cf6]" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>`
+          },
+          {
+            name: 'Marlene',
+            role: 'Líder Rebelde • Comandante Vaga-Lume',
+            faction: 'Resistência Vaga-Lume',
+            quote: '“Quantos mais precisam morrer antes que encontremos uma cura?”',
+            bio: 'Fundadora e líder dos Vaga-Lumes, prometeu à mãe de Ellie que protegeria a garota a qualquer custo. Carrega o fardo de comandar uma resistência dizimada pela FEDRA enquanto busca desesperadamente chegar ao hospital de Salt Lake City.',
+            plotRole: 'Encarna o dilema ético central da história, dividida entre o afeto pessoal por Ellie e o sacrifício necessário para salvar milhões de vidas.',
+            stats: { combat: 82, stealth: 80, resilience: 89 },
+            svg: `<svg class="w-14 h-14 text-[#06b6d4]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="7" r="2.2" fill="currentColor" /><path d="M12 9.5v9M12 11c-4.5-2.5-8.5-1.2-9 2.2 3.2 1.2 6.5.5 9-2.2zm0 0c4.5-2.5 8.5-1.2 9 2.2-3.2 1.2-6.5.5-9-2.2z" /></svg>`
+          }
+        ];
+
+        this.buttons = document.querySelectorAll('.char-select-btn');
+        this.panel = document.getElementById('character-dossier-panel');
+
+        this.buttons.forEach((btn) => {
+          btn.addEventListener('click', () => this.selectCharacter(Number(btn.dataset.char)));
+        });
+
+        this.selectCharacter(0, false);
+      }
+
+      selectCharacter(idx, animate = true) {
+        const c = this.characters[idx];
+        if (!c) return;
+
+        this.buttons.forEach((b, i) => {
+          const active = i === idx;
+          b.classList.toggle('active', active);
+          const subtitle = b.querySelector('div > div:last-child');
+          const badge = b.querySelector('span');
+          if (subtitle) {
+            subtitle.classList.toggle('text-[#06b6d4]', active);
+            subtitle.classList.toggle('text-[#94a3b8]', !active);
+          }
+          if (badge) {
+            badge.classList.toggle('text-[#a855f7]', active);
+            badge.classList.toggle('border-[#8b5cf6]/30', active);
+            badge.classList.toggle('text-[#94a3b8]', !active);
+            badge.classList.toggle('border-white/10', !active);
+          }
+        });
+
+        if (animate && this.panel) {
+          this.panel.classList.remove('animate-content-swap');
+          void this.panel.offsetWidth;
+          this.panel.classList.add('animate-content-swap');
+        }
+
+        document.getElementById('char-portrait').innerHTML = c.svg;
+        document.getElementById('char-faction-badge').textContent = c.faction;
+        document.getElementById('char-role').textContent = c.role;
+        document.getElementById('char-name').textContent = c.name;
+        document.getElementById('char-quote').textContent = c.quote;
+        document.getElementById('char-bio').textContent = c.bio;
+        document.getElementById('char-plot-role').textContent = c.plotRole;
+
+        document.getElementById('char-stat-combat-val').textContent = `${c.stats.combat}%`;
+        document.getElementById('char-stat-combat-bar').style.width = `${c.stats.combat}%`;
+        document.getElementById('char-stat-stealth-val').textContent = `${c.stats.stealth}%`;
+        document.getElementById('char-stat-stealth-bar').style.width = `${c.stats.stealth}%`;
+        document.getElementById('char-stat-resilience-val').textContent = `${c.stats.resilience}%`;
+        document.getElementById('char-stat-resilience-bar').style.width = `${c.stats.resilience}%`;
+      }
+    }
+
+    /**
+     * 5. SIMULADOR INTERATIVO 'BANCADA DE SOBREVIVÊNCIA'
+     */
+    class CraftingWorkbenchController {
+      constructor() {
+        this.labels = {
+          alcool: 'Álcool',
+          pano: 'Pano',
+          lamina: 'Lâmina',
+          fita: 'Fita Adesiva',
+          acucar: 'Açúcar',
+          explosivo: 'Explosivo'
+        };
+
+        this.recipes = {
+          'alcool+pano': {
+            name: 'Kit Médico de Emergência',
+            tag: 'CURA • RESTAURA 75% HP',
+            desc: 'Bandagem esterilizada com álcool que estanca hemorragias graves em segundos. Essencial após confrontos diretos.'
+          },
+          'acucar+alcool': {
+            name: 'Coquetel Molotov',
+            tag: 'INCENDIÁRIO • DANO EM ÁREA',
+            desc: 'Bomba incendiária de alto impacto térmico. Capaz de incinerar grupos de Corredores e derreter a armadura fúngica de Baiacus.'
+          },
+          'fita+lamina': {
+            name: 'Faca Improvisada (Shiv)',
+            tag: 'FURTIVO • LETAL CONTRA CLICKERS',
+            desc: 'Lâmina reforçada com fita adesiva para execução silenciosa de Estaladores e abertura de portas trancadas com suprimentos raros.'
+          },
+          'explosivo+lamina': {
+            name: 'Bomba de Pregos',
+            tag: 'ARMADILHA • ESTILHAÇOS LETAIS',
+            desc: 'Artefato explosivo de proximidade que projeta lâminas em alta velocidade, eliminando qualquer ameaça que cruzar seu perímetro.'
+          }
+        };
+
+        this.selected = [];
+        this.resourceBtns = document.querySelectorAll('.resource-node');
+        this.craftBtn = document.getElementById('craft-action-btn');
+        this.progressBar = document.getElementById('craft-progress-bar');
+
+        this.bindEvents();
+      }
+
+      bindEvents() {
+        this.resourceBtns.forEach((btn) => {
+          btn.addEventListener('click', () => {
+            const key = btn.dataset.resource;
+            this.toggleResource(key);
+          });
+        });
+
+        document.querySelectorAll('.recipe-preset-btn').forEach((btn) => {
+          btn.addEventListener('click', () => {
+            const items = btn.dataset.preset.split(',');
+            this.selected = [...items];
+            this.updateUI();
+            this.craftItem();
+          });
+        });
+
+        document.getElementById('workbench-clear-btn')?.addEventListener('click', () => {
+          this.selected = [];
+          this.progressBar.style.width = '0%';
+          document.getElementById('crafted-item-name').textContent = 'Aguardando Combinação...';
+          document.getElementById('crafted-item-tag').textContent = 'Bancada Pronta';
+          document.getElementById('crafted-item-desc').textContent =
+            'Selecione 2 recursos da mochila para fabricar um equipamento tático.';
+          this.updateUI();
+        });
+
+        this.craftBtn?.addEventListener('click', () => this.craftItem());
+      }
+
+      toggleResource(key) {
+        const idx = this.selected.indexOf(key);
+        if (idx > -1) {
+          this.selected.splice(idx, 1);
+        } else {
+          if (this.selected.length >= 2) {
+            this.selected.shift();
+          }
+          this.selected.push(key);
+        }
+        this.progressBar.style.width = '0%';
+        this.updateUI();
+      }
+
+      updateUI() {
+        this.resourceBtns.forEach((btn) => {
+          btn.classList.toggle('selected', this.selected.includes(btn.dataset.resource));
+        });
+
+        const slot1 = document.getElementById('slot-1');
+        const slot2 = document.getElementById('slot-2');
+
+        slot1.textContent = this.selected[0] ? `Slot 1: ${this.labels[this.selected[0]]}` : 'Slot 1: Vazio';
+        slot1.classList.toggle('text-[#06b6d4]', Boolean(this.selected[0]));
+        slot1.classList.toggle('font-semibold', Boolean(this.selected[0]));
+
+        slot2.textContent = this.selected[1] ? `Slot 2: ${this.labels[this.selected[1]]}` : 'Slot 2: Vazio';
+        slot2.classList.toggle('text-[#a855f7]', Boolean(this.selected[1]));
+        slot2.classList.toggle('font-semibold', Boolean(this.selected[1]));
+
+        if (this.selected.length === 2) {
+          this.craftBtn.disabled = false;
+          this.craftBtn.textContent = `Fabricar com ${this.labels[this.selected[0]]} + ${this.labels[this.selected[1]]}`;
+        } else {
+          this.craftBtn.disabled = true;
+          this.craftBtn.textContent = 'Selecione 2 Recursos para Fabricar';
+        }
+      }
+
+      craftItem() {
+        if (this.selected.length !== 2) return;
+        const comboKey = [...this.selected].sort().join('+');
+        const result = this.recipes[comboKey];
+
+        this.progressBar.style.width = '0%';
+        requestAnimationFrame(() => {
+          this.progressBar.style.width = '100%';
+        });
+
+        const nameEl = document.getElementById('crafted-item-name');
+        const tagEl = document.getElementById('crafted-item-tag');
+        const descEl = document.getElementById('crafted-item-desc');
+
+        if (result) {
+          nameEl.textContent = result.name;
+          tagEl.textContent = result.tag;
+          descEl.textContent = result.desc;
+        } else {
+          nameEl.textContent = 'Combinação Instável';
+          tagEl.textContent = 'RECEITA INCOMPATÍVEL';
+          descEl.textContent =
+            'Estes dois materiais não formam um equipamento funcional. Tente: Álcool + Pano, Álcool + Açúcar, Lâmina + Fita Adesiva ou Lâmina + Explosivo.';
+        }
+      }
+    }
+
+    /**
+     * 6. CONTROLADOR DE CHECKOUT OFICIAL AMAZING GAMES (CUPOM AMAZING10 & CHAVE)
+     */
+    class AmazingCheckoutController {
+      constructor() {
+        this.editions = {
+          padrao: {
+            key: 'padrao',
+            name: 'Edição Padrão Digital',
+            price: 199.9
+          },
+          colecionador: {
+            key: 'colecionador',
+            name: 'Edição Colecionador Vaga-Lume',
+            price: 299.9
+          }
+        };
+
+        this.selectedEdition = 'colecionador';
+        this.couponApplied = false;
+
+        this.modal = document.getElementById('reservation-modal');
+        this.form = document.getElementById('reservation-form');
+        this.successView = document.getElementById('reservation-success');
+        this.errorMsg = document.getElementById('modal-error-msg');
+        this.couponInput = document.getElementById('coupon-input');
+        this.couponFeedback = document.getElementById('coupon-feedback');
+
+        this.bindEvents();
+      }
+
+      formatBRL(value) {
+        return value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+      }
+
+      updateModalPricing() {
+        const edition = this.editions[this.selectedEdition];
+        const finalPrice = this.couponApplied ? edition.price * 0.9 : edition.price;
+
+        document.getElementById('modal-edition-name').textContent = edition.name;
+        document.getElementById('modal-edition-price').textContent = this.formatBRL(finalPrice);
+
+        const origEl = document.getElementById('modal-original-price');
+        const statusEl = document.getElementById('modal-coupon-status');
+
+        if (this.couponApplied) {
+          origEl.textContent = this.formatBRL(edition.price);
+          origEl.classList.remove('hidden');
+          statusEl.textContent = 'Cupom AMAZING10 ativo (-10%)';
+          statusEl.className = 'text-[11px] font-semibold text-[#06b6d4]';
+        } else {
+          origEl.classList.add('hidden');
+          statusEl.textContent = 'Cupom disponível: AMAZING10';
+          statusEl.className = 'text-[11px] text-[#94a3b8]';
+        }
+      }
+
+      openModal(editionKey) {
+        if (editionKey && this.editions[editionKey]) {
+          this.selectedEdition = editionKey;
+        }
+        this.updateModalPricing();
+
+        this.form.classList.remove('hidden');
+        this.successView.classList.add('hidden');
+        this.errorMsg.classList.add('hidden');
+
+        this.modal.classList.remove('hidden');
+        this.modal.classList.add('flex');
+        document.body.style.overflow = 'hidden';
+      }
+
+      closeModal() {
+        this.modal.classList.add('hidden');
+        this.modal.classList.remove('flex');
+        document.body.style.overflow = '';
+      }
+
+      applyCoupon() {
+        const code = this.couponInput.value.trim().toUpperCase();
+        this.couponFeedback.classList.remove('hidden');
+
+        if (code === 'AMAZING10') {
+          this.couponApplied = true;
+          this.couponFeedback.textContent = '✓ Cupom AMAZING10 aplicado! Desconto de 10% ativado na Amazing Store.';
+          this.couponFeedback.className = 'text-xs mt-1.5 text-[#06b6d4] font-semibold';
+        } else {
+          this.couponApplied = false;
+          this.couponFeedback.textContent = 'Cupom inválido. Utilize o código promocional AMAZING10 para 10% OFF.';
+          this.couponFeedback.className = 'text-xs mt-1.5 text-rose-400';
+        }
+        this.updateModalPricing();
+      }
+
+      generateAmazingKey() {
+        const block1 = Math.floor(1000 + Math.random() * 9000);
+        const block2 = Math.floor(1000 + Math.random() * 9000);
+        return `AMGZ-TLOU-${block1}-${block2}`;
+      }
+
+      bindEvents() {
+        document.querySelectorAll('[data-open-modal]').forEach((btn) => {
+          btn.addEventListener('click', () => this.openModal(btn.dataset.openModal));
+        });
+
+        document.getElementById('modal-toggle-edition')?.addEventListener('click', () => {
+          this.selectedEdition = this.selectedEdition === 'colecionador' ? 'padrao' : 'colecionador';
+          this.updateModalPricing();
+        });
+
+        document.getElementById('apply-coupon-btn')?.addEventListener('click', () => this.applyCoupon());
+
+        document.getElementById('close-modal-btn')?.addEventListener('click', () => this.closeModal());
+        document.getElementById('done-modal-btn')?.addEventListener('click', () => this.closeModal());
+
+        this.modal?.addEventListener('click', (e) => {
+          if (e.target === this.modal) this.closeModal();
+        });
+
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape' && !this.modal.classList.contains('hidden')) {
+            this.closeModal();
+          }
+        });
+
+        this.form?.addEventListener('submit', (e) => {
+          e.preventDefault();
+          const name = document.getElementById('buyer-name').value.trim();
+          const email = document.getElementById('buyer-email').value.trim();
+
+          if (name.length < 2 || !email.includes('@')) {
+            this.errorMsg.textContent = 'Por favor, preencha seu nome completo e um e-mail válido para envio da chave.';
+            this.errorMsg.classList.remove('hidden');
+            return;
+          }
+
+          this.errorMsg.classList.add('hidden');
+          const platform = this.form.querySelector('input[name="platform"]:checked')?.value || 'PC — Amazing Games Launcher';
+          const edition = this.editions[this.selectedEdition];
+          const finalPrice = this.couponApplied ? edition.price * 0.9 : edition.price;
+          const officialKey = this.generateAmazingKey();
+
+          document.getElementById('voucher-code').textContent = officialKey;
+          document.getElementById('success-summary').innerHTML = `
+            Parabéns, <strong class="text-[#f8fafc]">${name}</strong>! Sua <strong class="text-[#a855f7]">${edition.name}</strong> (${this.formatBRL(finalPrice)}) para <strong class="text-[#f8fafc]">${platform}</strong> foi ativada pela <strong class="text-[#06b6d4]">Amazing Games</strong> e enviada para <span class="underline">${email}</span>.
+          `;
+
+          this.form.classList.add('hidden');
+          this.successView.classList.remove('hidden');
+        });
+
+        document.getElementById('copy-voucher-btn')?.addEventListener('click', (e) => {
+          const code = document.getElementById('voucher-code').textContent;
+          const btn = e.currentTarget;
+
+          try {
+            const tempInput = document.createElement('textarea');
+            tempInput.value = code;
+            tempInput.style.position = 'fixed';
+            tempInput.style.opacity = '0';
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+
+            btn.textContent = 'Chave Copiada ✓';
+            setTimeout(() => {
+              btn.textContent = 'Copiar Chave';
+            }, 2200);
+          } catch (err) {
+            btn.textContent = 'Chave Pronta';
+          }
+        });
+      }
+    }
+
+    /**
+     * 7. MICRO-INTERAÇÕES DE UI (MENU MOBILE, SPOTLIGHT CARDS & SCROLL REVEAL)
+     */
+    function initMicroInteractions() {
+      const mobileBtn = document.getElementById('mobile-menu-btn');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const iconOpen = document.getElementById('menu-icon-open');
+      const iconClose = document.getElementById('menu-icon-close');
+
+      mobileBtn?.addEventListener('click', () => {
+        const isHidden = mobileMenu.classList.toggle('hidden');
+        mobileBtn.setAttribute('aria-expanded', String(!isHidden));
+        iconOpen.classList.toggle('hidden', !isHidden);
+        iconClose.classList.toggle('hidden', isHidden);
+      });
+
+      document.querySelectorAll('.mobile-nav-link').forEach((link) => {
+        link.addEventListener('click', () => {
+          mobileMenu.classList.add('hidden');
+          mobileBtn.setAttribute('aria-expanded', 'false');
+          iconOpen.classList.remove('hidden');
+          iconClose.classList.add('hidden');
+        });
+      });
+
+      document.querySelectorAll('.spotlight-card').forEach((card) => {
+        card.addEventListener('mousemove', (e) => {
+          const rect = card.getBoundingClientRect();
+          card.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
+          card.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
+        });
+      });
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.1 }
+      );
+
+      document.querySelectorAll('.reveal-on-scroll').forEach((el) => observer.observe(el));
+    }
+
+    window.addEventListener('load', () => {
+      new SporeParticleEngine('spore-canvas');
+      new StoryTimelineController();
+      new BestiaryController();
+      new CharacterDossierController();
+      new CraftingWorkbenchController();
+      new AmazingCheckoutController();
+      initMicroInteractions();
+    });
+  </script>
+</body>
+</html>
