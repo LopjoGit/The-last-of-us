@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amazing Games | Campanha de Lançamento</title>
+    <!-- Carregando Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Carregando Fontes Google: Plus Jakarta Sans e Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            accent: '#3B82F6',    /* Azul vibrante principal */
+                            accentHover: '#2563EB',/* Azul mais escuro para hover */
+                            accentLight: '#EFF6FF',/* Fundo azulado suave */
+                            purple: '#8B5CF6',    /* Roxo de destaque */
+                            dark: '#050B14',      /* Preto profundo imersivo */
+                            surface: '#0F172A',   /* Fundo dos cards e blocos */
+                            border: '#1E293B',    /* Cor das bordas discretas */
+                            muted: '#94A3B8'      /* Texto secundário */
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-brand-dark text-white antialiased selection:bg-brand-accent selection:text-white">
+
+    <!-- =====================================================================
+         1. CABEÇALHO LIMPO E MINIMALISTA
+         ===================================================================== -->
+    <header class="sticky top-0 z-40 bg-brand-dark/85 backdrop-blur-md border-b border-brand-border">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            
+            <!-- NOME DA MARCA -->
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-purple to-brand-accent text-white font-display font-extrabold text-sm flex items-center justify-center shadow-md shadow-brand-accent/25 group-hover:scale-105 transition-transform">
+                    AG
+                </div>
+                <span id="display-brand-name" class="font-display font-extrabold text-xl tracking-tight text-white uppercase">
+                    Amazing Games
+                </span>
+            </a>
+
+            <!-- Navegação e Botão de Configuração Rápida -->
+            <nav class="flex items-center gap-4 sm:gap-6">
+                <a href="#diferenciais" class="hidden md:inline-block text-sm font-medium text-brand-muted hover:text-brand-accent transition-colors">
+                    Sobre o Jogo
+                </a>
+                
+                <!-- Botão para abrir o painel de personalização visual -->
+                <button onclick="toggleConfigModal()" class="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold text-brand-accent bg-brand-accent/10 hover:bg-brand-accent/20 border border-brand-accent/30 transition-all cursor-pointer">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
+                    </svg>
+                    <span>Personalizar</span>
+                </button>
+
+                <!-- Botão Secundário da Loja no Topo -->
+                <a id="nav-store-link" href="#link-da-sua-loja" class="hidden sm:inline-flex items-center justify-center px-5 py-2.5 rounded-xl text-sm font-semibold text-white bg-brand-accent hover:bg-brand-accentHover transition-colors shadow-sm">
+                    Garantir Edição
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- =====================================================================
+         2. SEÇÃO HERO (PÁGINA INICIAL)
+         ===================================================================== -->
+    <main>
+        <section class="relative pt-10 pb-16 sm:pt-16 sm:pb-24 overflow-hidden">
+            <!-- Elementos decorativos de fundo com azul e roxo -->
+            <div class="absolute top-0 right-0 -translate-y-12 translate-x-1/4 w-96 h-96 bg-brand-purple/15 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="absolute bottom-0 left-0 translate-y-1/4 -translate-x-1/4 w-96 h-96 bg-brand-accent/15 rounded-full blur-3xl pointer-events-none"></div>
+
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-10 items-center">
+                    
+                    <!-- COLUNA DE TEXTO -->
+                    <div class="lg:col-span-6 space-y-6 text-center lg:text-left">
+                        
+                        <!-- Tag de Destaque -->
+                        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-surface border border-brand-border shadow-sm">
+                            <span class="w-2 h-2 rounded-full bg-brand-accent animate-pulse"></span>
+                            <span class="text-xs font-extrabold tracking-widest uppercase text-brand-accent">
+                                Lançamento Exclusivo • Amazing Games
+                            </span>
+                        </div>
+
+                        <!-- TÍTULO PRINCIPAL -->
+                        <div class="space-y-2">
+                            <p id="hero-brand-kicker" class="text-sm sm:text-base font-bold uppercase tracking-widest text-brand-muted">
+                                APRESENTANDO NA <span class="text-brand-accent">AMAZING GAMES</span>
+                            </p>
+                            <h1 id="display-slogan" class="font-display font-extrabold text-4xl sm:text-5xl lg:text-[3.4rem] leading-[1.1] tracking-tight text-white">
+                                Uma jornada implacável por vingança e redenção.
+                            </h1>
+                        </div>
+
+                        <!-- TEXTO PERSUASIVO -->
+                        <p id="display-description" class="text-base sm:text-lg text-brand-muted leading-relaxed max-w-xl mx-auto lg:mx-0">
+                            Cinco anos após a jornada perigosa pelos Estados Unidos pós-pandêmicos, Ellie e Joel se estabelecem em Jackson, Wyoming. A paz é estilhaçada por um evento violento, dando início a uma busca implacável por justiça.
+                        </p>
+
+                        <!-- ÁREA DE BOTÕES -->
+                        <div class="pt-2 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+                            <a id="main-store-btn" href="#link-da-sua-loja" onclick="handleStoreClick(event)" class="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 rounded-2xl text-base font-bold text-white bg-gradient-to-r from-brand-accent to-brand-purple hover:opacity-90 shadow-lg shadow-brand-accent/25 hover:-translate-y-0.5 transition-all">
+                                <span id="display-btn-text">Comprar Agora</span>
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                                </svg>
+                            </a>
+
+                            <button onclick="toggleConfigModal()" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-4 rounded-2xl text-base font-semibold text-white bg-brand-surface hover:bg-brand-border border border-brand-border shadow-sm transition-all cursor-pointer">
+                                <svg class="w-5 h-5 text-brand-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round
