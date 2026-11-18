@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amazing Games | Galeria Oficial - The Last of Us</title>
+    <!-- Carregamento do Tailwind CSS para utilitários de layout responsivo -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Fontes Google: Inter para interface limpa e JetBrains Mono para telemetria técnica -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* ==========================================================================
+           TOKENS DE DESIGN & ARQUITETURA DE CORES (ESTILO ENGINE DE ALTA PERFORMANCE)
+           ========================================================================== */
+        :root {
+            --bg-void: #07070c;
+            --bg-surface: #0f101a;
+            --bg-elevated: #161826;
+            --neon-blue: #00d2ff;
+            --deep-blue: #1d4ed8;
+            --neon-purple: #a855f7;
+            --deep-purple: #8b5cf6;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --border-subtle: rgba(139, 92, 246, 0.22);
+            --glow-blue: 0 0 25px rgba(0, 210, 255, 0.35);
+            --glow-purple: 0 0 28px rgba(168, 85, 247, 0.4);
+        }
+
+        * {
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: var(--bg-void);
+            color: var(--text-primary);
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            overflow-x: hidden;
+            margin: 0;
+            /* Grade tática sutil no plano de fundo */
+            background-image: 
+                radial-gradient(circle at 15% 15%, rgba(29, 78, 216, 0.14) 0%, transparent 45%),
+                radial-gradient(circle at 85% 25%, rgba(139, 92, 246, 0.14) 0%, transparent 45%),
+                linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+            background-size: 100% 100%, 100% 100%, 40px 40px, 40px 40px;
+        }
+
+        .font-mono-tech {
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* ==========================================================================
+           ESTILIZAÇÃO DE CABEÇALHO & ELEMENTOS NEON
+           ========================================================================== */
+        .glass-header {
+            background: rgba(7, 7, 12, 0.82);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(0, 210, 255, 0.18);
+        }
+
+        .brand-gradient {
+            background: linear-gradient(135deg, #00d2ff 0%, #8b5cf6 55%, #a855f7 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .neon-badge {
+            background: linear-gradient(90deg, rgba(29, 78, 216, 0.25), rgba(168, 85, 247, 0.25));
+            border: 1px solid rgba(0, 210, 255, 0.45);
+            box-shadow: 0 0 15px rgba(0, 210, 255, 0.2);
+        }
+
+        /* ==========================================================================
+           CARDS DA GALERIA COM HOVER ACELERADO POR HARDWARE
+           ========================================================================== */
+        .gallery-card {
+            background-color: var(--bg-surface);
+            border: 1px solid var(--border-subtle);
+            transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), 
+                        border-color 0.35s ease, 
+                        box-shadow 0.35s ease;
+            will-change: transform, box-shadow;
+        }
+
+        .gallery-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--neon-blue);
+            box-shadow: 0 14px 35px -10px rgba(0, 0, 0, 0.8),
+                        0 0 22px rgba(0, 210, 255, 0.28),
+                        0 0 38px rgba(168, 85, 247, 0.22);
+        }
+
+        .gallery-card img {
+            transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1), filter 0.35s ease;
+            will-change: transform;
+        }
+
+        .gallery-card:hover img {
+            transform: scale(1.06);
+            filter: contrast(1.06) saturate(1.08);
+        }
+
+        /* ==========================================================================
+           LIGHTBOX MODAL & VIEWPORT DE INSPEÇÃO DE ALTA PRECISÃO
+           ========================================================================== */
+        .lightbox-backdrop {
+            background: rgba(5, 5, 10, 0.94);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .lightbox-backdrop.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .viewport-stage {
+            cursor: zoom-in;
+            user-select: none;
+            touch-action: none; /* Controle total de gestos pelo engine JS */
+        }
+
+        .viewport-stage.is-zoomed {
+            cursor: grab;
+        }
+
+        .viewport-stage.is-dragging {
+            cursor: grabbing;
+        }
+
+        #lightbox-image {
+            transform-origin: center center;
+            transition: transform 0.18s cubic-bezier(0.2, 0, 0.2, 1);
+            will-change: transform;
+            max-height: 70vh;
+            max-width: 90vw;
+        }
+
+        #lightbox-image.no-transition {
+            transition: none !important;
+        }
+
+        /* Barra de rolagem customizada para miniaturas */
+        .thumbs-strip::-webkit-scrollbar {
+            height: 6px;
+        }
+        .thumbs-strip::-webkit-scrollbar-track {
+            background: rgba(15, 16, 26, 0.8);
+            border-radius: 999px;
+        }
+        .thumbs-strip::-webkit-scrollbar-thumb {
+            background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple));
+            border-radius: 999px;
+        }
+
+        .thumb-btn {
+            transition: all 0.22s ease;
+            border: 2px solid transparent;
+            opacity: 0.52;
+        }
+
+        .thumb-btn:hover {
+            opacity: 0.88;
+            transform: translateY(-2px);
+        }
+
+        .thumb-btn.active {
+            opacity: 1;
+            border-color: var(--neon-blue);
+            box-shadow: 0 0 14px rgba(0, 210, 255, 0.55);
+            transform: scale(1.06);
+        }
+
+        .hud-btn {
+            background: rgba(22, 24, 38, 0.85);
+            border: 1px solid rgba(139, 92, 246, 0.35);
+            color: var(--text-primary);
+            transition: all 0.2s ease;
+        }
+
+        .hud-btn:hover:not(:disabled) {
+            background: rgba(29, 78, 216, 0.35);
+            border-color: var(--neon-blue);
+            box-shadow: var(--glow-blue);
+            transform: translateY(-1px);
+        }
+
+        .hud-btn:active:not(:disabled) {
+            transform: scale(0.96);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col selection:bg-purple-600 selection:text-white">
+
+    <!-- ======================================================================
+         1. CABEÇALHO DA LOJA 'AMAZING GAMES' COM NAVEGAÇÃO E BADGE DE DESTAQUE
+         ====================================================================== -->
+    <header class="glass-header sticky top-0 z-40 w-full">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
+            <!-- Identidade Visual Amazing Games -->
+            <a href="#topo" class="flex items-center gap-3 group focus:outline-none">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-[#00d2ff] via-[#1d4ed8] to-[#a855f7] p-[2px] shadow-lg shadow-purple-500/25">
+                    <div class="w-full h-full bg-[#07070c] rounded-[10px] flex items-center justify-center">
+                        <!-- Ícone geométrico estilo engine/controle -->
+                        <svg class="w-6 h-6 text-[#00d2ff] group-hover:text-[#a855f7] transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                    </div>
+                </div>
+                <div>
+                    <span class="text-xl sm:text-2xl font-black tracking-tight brand-gradient block leading-none">
+                        AMAZING GAMES
+                    </span>
+                    <span class="text-[10px] font-mono-tech uppercase tracking-[0.22em] text-slate-400">
+                        Digital Store &amp; Media Hub
+                    </span>
+                </div>
+            </a>
+
+            <!-- Navegação Simulada da Loja -->
+            <nav aria-label="Navegação Principal" class="hidden md:flex items-center gap-7 text-sm font-semibold text-slate-300">
+                <a href="#inicio" onclick="showToast('Navegando para o Início da Amazing Games'); return false;" class="hover:text-[#00d2ff] transition-colors">Início</a>
+                <a href="#galeria" class="text-[#00d2ff] relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-gradient-to-r after:from-[#00d2ff] after:to-[#a855f7] after:rounded-full">
+                    Galeria
+                </a>
+                <a href="#catalogo" onclick="showToast('Exibindo Catálogo Oficial Amazing Games'); return false;" class="hover:text-[#00d2ff] transition-colors">Catálogo</a>
+                <a href="#suporte" onclick="showToast('Central de Suporte Técnico Amazing Games'); return false;" class="hover:text-[#a855f7] transition-colors">Suporte</a>
+            </nav>
+
+            <!-- Badge de Destaque + Botão Discreto para Carregar Imagens Locais -->
+            <div class="flex items-center gap-2.5 sm:gap-3">
+                <input type="file" id="local-files-input" accept="image/*" multiple class="hidden" />
+                <button 
+                    type="button"
+                    id="btn-load-local"
+                    title="Selecione as 7 imagens no seu computador caso não estejam na mesma pasta do HTML"
+                    class="px-3 py-2 rounded-xl text-xs font-mono-tech font-semibold text-[#00d2ff] bg-[#0f101a] border border-[#00d2ff]/40 hover:bg-[#1d4ed8]/25 hover:border-[#00d2ff] transition-all cursor-pointer flex items-center gap-1.5">
+                    <span>+ Carregar Imagens Locais</span>
+                </button>
+                <button 
+                    type="button"
+                    onclick="showToast('The Last of Us™ Part I adicionado ao carrinho da Amazing Games!')"
+                    class="px-4 py-2 rounded-xl text-xs sm:text-sm font-bold text-white bg-gradient-to-r from-[#2563eb] to-[#9333ea] hover:from-[#00d2ff] hover:to-[#c084fc] transition-all shadow-lg shadow-purple-600/25 cursor-pointer">
+                    Adquirir Jogo
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ======================================================================
+         SEÇÃO HERO / CABEÇALHO DA GALERIA COM TELEMETRIA TÉCNICA
+         ====================================================================== -->
+    <main id="topo" class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+        <section class="mb-10 sm:mb-12 rounded-2xl bg-[#0f101a]/90 border border-purple-500/25 p-6 sm:p-8 relative overflow-hidden shadow-2xl">
+            <!-- Brilho ambiental decorativo -->
+            <div class="pointer-events-none absolute -top-24 -right-24 w-72 h-72 rounded-full bg-[#8b5cf6]/20 blur-3xl"></div>
+            <div class="pointer-events-none absolute -bottom-24 -left-24 w-72 h-72 rounded-full bg-[#00d2ff]/15 blur-3xl"></div>
+
+            <div class="relative z-10 flex flex-col lg:flex-row lg:items-end justify-between gap-6">
+                <div class="max-w-2xl">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-[#161826] border border-[#00d2ff]/30 text-[#00d2ff] text-xs font-mono-tech mb-4">
+                        <span>MEDIA_SHOWCASE // ENGINE_CAPTURE_RAW</span>
+                    </div>
+                    <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-white mb-3">
+                        The Last of Us™ <span class="brand-gradient">Galeria Oficial</span>
+                    </h1>
+                    <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+                        Explore capturas de tela em alta definição direto do motor gráfico. Clique em qualquer quadro abaixo para abrir o inspetor <span class="text-[#00d2ff] font-semibold">Amazing View™</span> com ampliação dinâmica, arrasto livre e navegação rápida.
+                    </p>
+                </div>
+
+                <!-- Painel de especificações técnicas estilo engine -->
+                <div class="grid grid-cols-3 gap-3 sm:gap-4 bg-[#07070c]/80 border border-slate-800 p-4 rounded-xl font-mono-tech text-xs">
+                    <div>
+                        <span class="text-slate-500 block">CAPTURAS</span>
+                        <span class="text-white font-bold text-sm sm:text-base">07 FRAMES</span>
+                    </div>
+                    <div class="border-l border-slate-800 pl-3 sm:pl-4">
+                        <span class="text-slate-500 block">RESOLUÇÃO</span>
+                        <span class="text-[#00d2ff] font-bold text-sm sm:text-base">4K UHD</span>
+                    </div>
+                    <div class="border-l border-slate-800 pl-3 sm:pl-4">
+                        <span class="text-slate-500 block">ZOOM MAX</span>
+                        <span class="text-[#a855f7] font-bold text-sm sm:text-base">400%</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================================================================
+             2. GRADE DE GALERIA RESPONSIVA (7 SCREENSHOTS EXATAS)
+             ================================================================== -->
+        <section id="galeria" aria-label="Grade de Capturas de Tela">
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-6">
+                <h2 class="text-lg sm:text-xl font-bold text-white flex items-center gap-2.5">
+                    <span class="w-2.5 h-6 rounded-full bg-gradient-to-b from-[#00d2ff] to-[#9333ea]"></span>
+                    Capturas de Tela em Destaque
+                </h2>
+                <span class="text-xs font-mono-tech text-slate-400">
+                    Clique em qualquer quadro para ampliar • Use + Carregar Imagens Locais se abrir fora da pasta
+                </span>
+            </div>
+
+            <!-- Grid injetado via JS para manter fonte única da verdade (Single Source of Truth) -->
+            <div id="gallery-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Cards renderizados dinamicamente -->
+            </div>
+        </section>
+    </main>
+
+    <!-- ======================================================================
+         RODAPÉ DA LOJA AMAZING GAMES
+         ====================================================================== -->
+    <footer class="border-t border-slate-800/80 bg-[#07070c] mt-16 py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
+            <div class="flex items-center gap-2">
+                <span class="font-bold text-slate-200">AMAZING GAMES</span>
+                <span>•</span>
+                <span>Plataforma Digital de Jogos &amp; Entretenimento</span>
+            </div>
+            <div class="font-mono-tech text-slate-500">
+                Atalhos Lightbox: [←/→] Navegar • [Scroll/+/-] Zoom • [Arrastar] Mover • [ESC] Fechar
+            </div>
+        </div>
+    </footer>
+
+    <!-- ======================================================================
+         3. MODAL LIGHTBOX INTERATIVO COMPLETO (ZOOM, PAN, SETAS, THUMBNAILS)
+         ====================================================================== -->
+    <div id="lightbox-modal" 
+         role="dialog" 
+         aria-modal="true" 
+         aria-labelledby="lightbox-title"
+         class="lightbox-backdrop fixed inset-0 z-50 flex flex-col justify-between p-3 sm:p-6">
+
+        <!-- Barra Superior do Lightbox: Contador, Título da Cena, Controles de Zoom e Fechar -->
+        <div class="relative z-20 flex flex-wrap items-center justify-between gap-3 max-w-7xl w-full mx-auto bg-[#0f101a]/90 border border-purple-500/30 rounded-2xl px-4 py-2.5 shadow-xl">
+            <!-- Contador de Slides e Título -->
+            <div class="flex items-center gap-3 min-w-0">
+                <span id="lightbox-counter" class="px-3 py-1 rounded-lg bg-gradient-to-r from-[#1d4ed8]/40 to-[#8b5cf6]/40 border border-[#00d2ff]/40 font-mono-tech text-xs sm:text-sm font-bold text-[#00d2ff] shrink-0">
+                    1 / 7
+                </span>
+                <div class="truncate">
+                    <h3 id="lightbox-title" class="text-sm sm:text-base font-bold text-white truncate">
+                        Título da Cena
+                    </h3>
+                    <p id="lightbox-meta" class="text-[11px] font-mono-tech text-slate-400 truncate">
+                        3840x2160 • RAW CAPTURE
+                    </p>
+                </div>
+            </div>
+
+            <!-- Controles de Ampliação (Zoom Out, Indicador %, Zoom In, Reset) e Botão X -->
+            <div class="flex items-center gap-1.5 sm:gap-2">
+                <button type="button" id="btn-zoom-out" title="Reduzir Zoom (-)" aria-label="Reduzir Zoom"
+                        class="hud-btn w-9 h-9 sm:w-10 sm:h-10 rounded-xl flex items-center justify-center font-bold text-lg cursor-pointer">
+                    −
+                </button>
+
+                <button type="button" id="btn-zoom-reset" title="Resetar Zoom (100%)"
+                        class="hud-btn px-2.5 h-9 sm:h-10 rounded-xl font-mono-tech text-xs font-bold text-[#00d2ff] min-w-[58px] cursor-pointer">
+                    100%
+                </button>
+
+                <button type="button" id="btn-zoom-in" title="Ampliar Zoom (+)" aria-label="Ampliar Zoom"
+                        class="hud-btn w-9 h-9 sm:w-10 sm:h-10 rounded-xl flex items-center justify-center font-bold text-lg cursor-pointer">
+                    +
+                </button>
+
+                <div class="w-px h-6 bg-slate-700 mx-1"></div>
+
+                <button type="button" id="btn-close-lightbox" title="Fechar Galeria (ESC)" aria-label="Fechar Galeria"
+                        class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-rose-500/15 border border-rose-500/40 text-rose-300 hover:bg-rose-600 hover:text-white hover:border-rose-400 transition-all flex items-center justify-center font-bold cursor-pointer">
+                    ✕
+                </button>
+            </div>
+        </div>
+
+        <!-- Palco Central de Visualização (Viewport com Zoom e Pan) -->
+        <div id="viewport-stage" class="viewport-stage relative flex-grow w-full flex items-center justify-center overflow-hidden my-2">
+            
+            <!-- Botão Anterior (Seta Esquerda na Tela) -->
+            <button type="button" id="btn-prev" aria-label="Imagem Anterior" title="Imagem Anterior (Seta Esquerda)"
+                    class="hud-btn absolute left-1 sm:left-4 z-20 w-11 h-11 sm:w-12 sm:h-12 rounded-2xl flex items-center justify-center shadow-2xl cursor-pointer">
+                <svg class="w-6 h-6 text-[#00d2ff]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+                </svg>
+            </button>
+
+            <!-- Container da Imagem Ampliável -->
+            <div id="image-wrapper" class="relative flex items-center justify-center">
+                <img id="lightbox-image" 
+                     src="" 
+                     alt="" 
+                     draggable="false"
+                     class="rounded-xl shadow-[0_0_50px_rgba(0,0,0,0.9)] border border-purple-500/30 select-none object-contain" />
+            </div>
+
+            <!-- Botão Próxima (Seta Direita na Tela) -->
+            <button type="button" id="btn-next" aria-label="Próxima Imagem" title="Próxima Imagem (Seta Direita)"
+                    class="hud-btn absolute right-1 sm:right-4 z-20 w-11 h-11 sm:w-12 sm:h-12 rounded-2xl flex items-center justify-center shadow-2xl cursor-pointer">
+                <svg class="w-6 h-6 text-[#a855f7]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                </svg>
+            </button>
+        </div>
+
+        <!-- Barra Inferior: Legenda Detalhada + Barra de Miniaturas (Thumbnails) Clicáveis -->
+        <div class="relative z-20 max-w-5xl w-full mx-auto bg-[#0f101a]/90 border border-purple-500/30 rounded-2xl p-3 shadow-xl">
+            <p id="lightbox-caption" class="text-center text-xs sm:text-sm text-slate-300 mb-2.5 px-2">
+                Descrição detalhada da captura de tela.
+            </p>
+            <div id="thumbnails-bar" class="thumbs-strip flex items-center justify-start sm:justify-center gap-2.5 overflow-x-auto pb-1 px-1">
+                <!-- Miniaturas geradas dinamicamente -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Notificação Toast não-intrusiva (Substitui alert()) -->
+    <div id="toast-notification" 
+         class="fixed bottom-5 right-5 z-50 pointer-events-none opacity-0 translate-y-3 transition-all duration-300 bg-[#161826] border border-[#00d2ff]/50 text-white px-4 py-3 rounded-xl shadow-[0_0_25px_rgba(0,210,255,0.3)] flex items-center gap-3 text-xs sm:text-sm font-medium">
+        <span class="w-2.5 h-2.5 rounded-full bg-[#00d2ff]"></span>
+        <span id="toast-message">Mensagem do sistema</span>
+    </div>
+
+    <!-- ======================================================================
+         MOTOR JAVASCRIPT PURO (ARQUITETURA ORIENTADA A ESTADO E PERFORMANCE)
+         ====================================================================== -->
+    <script>
+        /**
+         * Banco de dados estático das 7 screenshots fornecidas pelo usuário.
+         * Nomes de arquivos originais preservados exatamente conforme especificado.
+         */
+        const SCREENSHOTS_DATA = [
+            {
+                file: 'image_532a81.png',
+                title: 'Encontro com a Girafa — Salt Lake City',
+                caption: 'Ellie e Joel diante da girafa com o logo The Last of Us Part I em meio às ruínas tomadas pela natureza.',
+                resolution: '3840 × 2160 (4K UHD)',
+                tag: 'CENA ICÔNICA'
+            },
+            {
+                file: 'image_532af7.png',
+                title: 'Na Estrada — Olhar para o Horizonte',
+                caption: 'Close-up de Ellie olhando para cima dentro do carro ao lado de Joel durante a travessia.',
+                resolution: '3840 × 2160 (4K UHD)',
+                tag: 'CINEMÁTICA'
+            },
+            {
+                file: 'image_532e1d.png',
+                title: 'Ruínas Submersas — Seattle',
+                caption: 'Ellie de costas diante de uma rua tomada pela vegetação, carros abandonados e fumaça preta ao fundo.',
+                resolution: '2560 × 1440 (QHD)',
+                tag: 'EXPLORAÇÃO'
+            },
+            {
+                file: 'image_532e59.png',
+                title: 'Avenida Inundada — Reflexos',
+                caption: 'Joel de costas caminhando com água até os joelhos sob luz solar intensa e reflexos realistas.',
+                resolution: '3840 × 2160 (4K UHD)',
+                tag: 'ILUMINAÇÃO HDR'
+            },
+            {
+                file: 'image_532e78.png',
+                title: 'Instinto de Sobrevivência',
+                caption: 'Ellie em combate empunhando seu canivete em meio à vegetação densa.',
+                resolution: '3840 × 2160 (4K UHD)',
+                tag: 'AÇÃO INTENSA'
+            },
+            {
+                file: 'image_5331a0.png',
+                title: 'Observando o Vale',
+                caption: 'Ellie e Joel lado a lado apoiados em uma mureta de concreto observando a paisagem.',
+                resolution: '2560 × 1440 (QHD)',
+                tag: 'NARRATIVA'
+            },
+            {
+                file: 'image_53327a.png',
+                title: 'Cavalgada ao Entardecer — Jackson',
+                caption: 'Joel com violão nas costas e Tommy cavalgando sob luz dourada com vista para o assentamento iluminado.',
+                resolution: '3840 × 2160 (4K UHD)',
+                tag: 'PANORAMA'
+            }
+        ];
+
+        // Mapa em memória para URLs locais caso o usuário selecione os arquivos manualmente
+        const LocalObjectURLMap = new Map();
+
+        // Estado centralizado do visualizador Lightbox
+        const ViewerState = {
+            isOpen: false,
+            currentIndex: 0,
+            scale: 1,
+            minScale: 1,
+            maxScale: 4,
+            translateX: 0,
+            translateY: 0,
+            isDragging: false,
+            dragStartX: 0,
+            dragStartY: 0,
+            touchStartX: 0,
+            touchStartY: 0,
+            hasMovedDuringDrag: false
+        };
+
+        // Cache de referências do DOM
+        const DOM = {
+            galleryGrid: document.getElementById('gallery-grid'),
+            modal: document.getElementById('lightbox-modal'),
+            stage: document.getElementById('viewport-stage'),
+            img: document.getElementById('lightbox-image'),
+            counter: document.getElementById('lightbox-counter'),
+            title: document.getElementById('lightbox-title'),
+            meta: document.getElementById('lightbox-meta'),
+            caption: document.getElementById('lightbox-caption'),
+            thumbsBar: document.getElementById('thumbnails-bar'),
+            btnZoomIn: document.getElementById('btn-zoom-in'),
+            btnZoomOut: document.getElementById('btn-zoom-out'),
+            btnZoomReset: document.getElementById('btn-zoom-reset'),
+            btnPrev: document.getElementById('btn-prev'),
+            btnNext: document.getElementById('btn-next'),
+            btnClose: document.getElementById('btn-close-lightbox'),
+            btnLoadLocal: document.getElementById('btn-load-local'),
+            localFilesInput: document.getElementById('local-files-input'),
+            toast: document.getElementById('toast-notification'),
+            toastMsg: document.getElementById('toast-message')
+        };
+// ... existing code ... -->
+        function goToSlide(index) {
+            const total = SCREENSHOTS_DATA.length;
+            ViewerState.currentIndex = (index + total) % total;
+            const current = SCREENSHOTS_DATA[ViewerState.currentIndex];
+
+            resetZoom(true);
+
+            DOM.img.src = resolveImageSrc(current.file);
+            DOM.img.alt = `${current.title} - ${current.caption}`;
+            DOM.img.onerror = () => handleImageFallback(DOM.img, current.title, current.file);
+
+            DOM.counter.textContent = `${ViewerState.currentIndex + 1} / ${total}`;
+            DOM.title.textContent = current.title;
+            DOM.meta.textContent = `${current.resolution} • ${current.tag}`;
+            DOM.caption.textContent = current.caption;
+
+            const thumbButtons = DOM.thumbsBar.querySelectorAll('.thumb-btn');
+            thumbButtons.forEach((btn, idx) => {
+                if (idx === ViewerState.currentIndex) {
+                    btn.classList.add('active');
+                    btn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+                } else {
+                    btn.classList.remove('active');
+                }
+            });
+        }
+
+        function openLightbox(index) {
+            ViewerState.isOpen = true;
+            DOM.modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            goToSlide(index);
+        }
+
+        function closeLightbox() {
+            ViewerState.isOpen = false;
+            DOM.modal.classList.remove('active');
+            document.body.style.overflow = '';
+            resetZoom(true);
+        }
+
+        function applyTransform(instant = false) {
+            if (instant) {
+                DOM.img.classList.add('no-transition');
+            } else {
+                DOM.img.classList.remove('no-transition');
+            }
+
+            DOM.img.style.transform = `translate3d(${ViewerState.translateX}px, ${ViewerState.translateY}px, 0) scale(${ViewerState.scale})`;
+            DOM.btnZoomReset.textContent = `${Math.round(ViewerState.scale * 100)}%`;
+
+            if (ViewerState.scale > 1) {
+                DOM.stage.classList.add('is-zoomed');
+            } else {
+                DOM.stage.classList.remove('is-zoomed', 'is-dragging');
+            }
+        }
+
+        function setZoom(newScale, instant = false) {
+            const clamped = Math.min(ViewerState.maxScale, Math.max(ViewerState.minScale, newScale));
+            ViewerState.scale = Number(clamped.toFixed(2));
+
+            if (ViewerState.scale === 1) {
+                ViewerState.translateX = 0;
+                ViewerState.translateY = 0;
+            }
+
+            applyTransform(instant);
+        }
+
+        function resetZoom(instant = false) {
+            ViewerState.scale = 1;
+            ViewerState.translateX = 0;
+            ViewerState.translateY = 0;
+            ViewerState.isDragging = false;
+            applyTransform(instant);
+        }
+
+        let toastTimer = null;
+        function showToast(message) {
+            DOM.toastMsg.textContent = message;
+            DOM.toast.classList.remove('opacity-0', 'translate-y-3');
+            DOM.toast.classList.add('opacity-100', 'translate-y-0');
+
+            clearTimeout(toastTimer);
+            toastTimer = setTimeout(() => {
+                DOM.toast.classList.remove('opacity-100', 'translate-y-0');
+                DOM.toast.classList.add('opacity-0', 'translate-y-3');
+            }, 3000);
+        }
+
+        function bindEvents() {
+            DOM.btnLoadLocal.addEventListener('click', () => {
+                DOM.localFilesInput.click();
+            });
+
+            DOM.localFilesInput.addEventListener('change', (e) => {
+                handleLocalFilesSelection(e.target.files);
+                e.target.value = '';
+            });
+
+            DOM.btnPrev.addEventListener('click', (e) => {
+                e.stopPropagation();
+                goToSlide(ViewerState.currentIndex - 1);
+            });
+
+            DOM.btnNext.addEventListener('click', (e) => {
+                e.stopPropagation();
+                goToSlide(ViewerState.currentIndex + 1);
+            });
+
+            DOM.btnClose.addEventListener('click', (e) => {
+                e.stopPropagation();
+                closeLightbox();
+            });
+
+            DOM.btnZoomIn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                setZoom(ViewerState.scale + 0.5);
+            });
+
+            DOM.btnZoomOut.addEventListener('click', (e) => {
+                e.stopPropagation();
+                setZoom(ViewerState.scale - 0.5);
+            });
+
+            DOM.btnZoomReset.addEventListener('click', (e) => {
+                e.stopPropagation();
+                resetZoom();
+            });
+
+            DOM.img.addEventListener('click', (e) => {
+                e.stopPropagation();
+                if (ViewerState.hasMovedDuringDrag) {
+                    ViewerState.hasMovedDuringDrag = false;
+                    return;
+                }
+                if (ViewerState.scale === 1) {
+                    setZoom(2.2);
+                } else {
+                    resetZoom();
+                }
+            });
+
+            DOM.stage.addEventListener('wheel', (e) => {
+                if (!ViewerState.isOpen) return;
+                e.preventDefault();
+                const delta = e.deltaY < 0 ? 0.35 : -0.35;
+                setZoom(ViewerState.scale + delta, true);
+            }, { passive: false });
+
+            DOM.stage.addEventListener('mousedown', (e) => {
+                if (e.target.closest('button')) return;
+                ViewerState.hasMovedDuringDrag = false;
+
+                if (ViewerState.scale > 1) {
+                    ViewerState.isDragging = true;
+                    ViewerState.dragStartX = e.clientX - ViewerState.translateX;
+                    ViewerState.dragStartY = e.clientY - ViewerState.translateY;
+                    DOM.stage.classList.add('is-dragging');
+                }
+            });
+
+            window.addEventListener('mousemove', (e) => {
+                if (!ViewerState.isDragging) return;
+                ViewerState.hasMovedDuringDrag = true;
+                ViewerState.translateX = e.clientX - ViewerState.dragStartX;
+                ViewerState.translateY = e.clientY - ViewerState.dragStartY;
+                applyTransform(true);
+            });
+
+            window.addEventListener('mouseup', () => {
+                if (ViewerState.isDragging) {
+                    ViewerState.isDragging = false;
+                    DOM.stage.classList.remove('is-dragging');
+                }
+            });
+
+            DOM.stage.addEventListener('click', (e) => {
+                if (e.target === DOM.stage) {
+                    closeLightbox();
+                }
+            });
+
+            DOM.stage.addEventListener('touchstart', (e) => {
+                if (e.touches.length === 1) {
+                    const touch = e.touches[0];
+                    ViewerState.touchStartX = touch.clientX;
+                    ViewerState.touchStartY = touch.clientY;
+                    ViewerState.hasMovedDuringDrag = false;
+
+                    if (ViewerState.scale > 1) {
+                        ViewerState.isDragging = true;
+                        ViewerState.dragStartX = touch.clientX - ViewerState.translateX;
+                        ViewerState.dragStartY = touch.clientY - ViewerState.translateY;
+                    }
+                }
+            }, { passive: true });
+
+            DOM.stage.addEventListener('touchmove', (e) => {
+                if (e.touches.length === 1 && ViewerState.isDragging && ViewerState.scale > 1) {
+                    const touch = e.touches[0];
+                    ViewerState.hasMovedDuringDrag = true;
+                    ViewerState.translateX = touch.clientX - ViewerState.dragStartX;
+                    ViewerState.translateY = touch.clientY - ViewerState.dragStartY;
+                    applyTransform(true);
+                }
+            }, { passive: true });
+
+            DOM.stage.addEventListener('touchend', (e) => {
+                if (ViewerState.scale === 1 && e.changedTouches.length === 1) {
+                    const diffX = e.changedTouches[0].clientX - ViewerState.touchStartX;
+                    const diffY = e.changedTouches[0].clientY - ViewerState.touchStartY;
+
+                    if (Math.abs(diffX) > 50 && Math.abs(diffX) > Math.abs(diffY)) {
+                        if (diffX < 0) {
+                            goToSlide(ViewerState.currentIndex + 1);
+                        } else {
+                            goToSlide(ViewerState.currentIndex - 1);
+                        }
+                    }
+                }
+                ViewerState.isDragging = false;
+            });
+
+            window.addEventListener('keydown', (e) => {
+                if (!ViewerState.isOpen) return;
+
+                switch (e.key) {
+                    case 'Escape':
+                        closeLightbox();
+                        break;
+                    case 'ArrowRight':
+                        goToSlide(ViewerState.currentIndex + 1);
+                        break;
+                    case 'ArrowLeft':
+                        goToSlide(ViewerState.currentIndex - 1);
+                        break;
+                    case '+':
+                    case '=':
+                        setZoom(ViewerState.scale + 0.5);
+                        break;
+                    case '-':
+                    case '_':
+                        setZoom(ViewerState.scale - 0.5);
+                        break;
+                    case '0':
+                        resetZoom();
+                        break;
+                }
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            initGallery();
+            bindEvents();
+        });
+    </script>
+</body>
+</html>
