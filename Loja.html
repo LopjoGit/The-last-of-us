@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Last of Us — Amazing Games</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Oswald:wght@600;700&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Oswald', 'sans-serif'],
+          },
+          colors: {
+            void: '#07070c',
+            obsidian: '#0d0d16',
+            twilight: '#131324',
+            violetGlow: '#8b5cf6',
+            royalPurple: '#7c3aed',
+            electricBlue: '#3b82f6',
+            cobaltBlue: '#2563eb',
+          }
+        }
+      }
+    };
+  </script>
+</head>
+<body class="bg-[#07070c] text-slate-50 font-sans antialiased min-h-screen selection:bg-[#7c3aed] selection:text-white overflow-x-hidden">
+
+  <!-- Brilhos atmosféricos de fundo em roxo e azul -->
+  <div class="fixed inset-0 pointer-events-none -z-10 overflow-hidden">
+    <div class="absolute -top-32 -left-32 w-[480px] h-[480px] rounded-full bg-[#7c3aed]/15 blur-[120px]"></div>
+    <div class="absolute top-1/3 -right-32 w-[520px] h-[520px] rounded-full bg-[#2563eb]/15 blur-[130px]"></div>
+    <div class="absolute bottom-0 left-1/3 w-[420px] h-[420px] rounded-full bg-[#8b5cf6]/10 blur-[120px]"></div>
+  </div>
+
+  <!-- Cabeçalho da Loja Amazing Games -->
+  <header class="sticky top-0 z-40 bg-[#07070c]/90 backdrop-blur-md border-b border-[#8b5cf6]/25">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-[#7c3aed] to-[#2563eb] flex items-center justify-center font-extrabold text-white text-base shadow-lg shadow-[#7c3aed]/40">
+          AG
+        </div>
+        <span class="font-extrabold text-lg sm:text-xl tracking-wider uppercase bg-gradient-to-r from-[#a78bfa] via-[#8b5cf6] to-[#3b82f6] bg-clip-text text-transparent">
+          Amazing Games
+        </span>
+      </div>
+
+      <nav class="hidden md:flex items-center gap-7 text-sm text-slate-400">
+        <span class="text-[#3b82f6] font-semibold cursor-pointer">Loja</span>
+        <span class="hover:text-slate-200 transition-colors cursor-pointer">Lançamentos</span>
+        <span class="hover:text-slate-200 transition-colors cursor-pointer">Ofertas</span>
+        <span class="hover:text-slate-200 transition-colors cursor-pointer">Biblioteca</span>
+      </nav>
+
+      <div class="flex items-center gap-2 text-xs font-semibold px-3 py-1.5 rounded-full bg-[#0d0d16] border border-[#3b82f6]/30 text-slate-300">
+        <span class="w-2 h-2 rounded-full bg-[#3b82f6] animate-pulse"></span>
+        Loja Oficial Digital
+      </div>
+    </div>
+  </header>
+
+  <!-- Conteúdo Principal -->
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 pt-6 pb-16">
+    <!-- Breadcrumb -->
+    <div class="text-xs sm:text-sm text-slate-400 mb-5 flex items-center gap-2">
+      <span>Amazing Games</span>
+      <span>&rsaquo;</span>
+      <span>Catálogo</span>
+      <span>&rsaquo;</span>
+      <span class="text-[#8b5cf6] font-medium">The Last of Us</span>
+    </div>
+
+    <!-- Banner Hero com a imagem 100% visível sem cortes -->
+    <section
+      aria-label="Banner The Last of Us"
+      class="hero-banner relative w-full rounded-[20px] overflow-hidden border border-[#8b5cf6]/35 bg-[#07070c] shadow-[0_24px_60px_rgba(0,0,0,0.85),0_0_40px_rgba(124,58,237,0.22)]"
+    >
+      <!-- Imagem de fundo em largura total e altura automática para nunca cortar -->
+      <img
+        src="data:image/jpeg;base64,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"
+        alt="The Last of Us Part I"
+        class="hero-bg-img w-full h-auto block select-none"
+        style="width: 100%; height: auto; display: block;"
+        onerror="this.src='https://placehold.co/1280x720/0d0d16/8b5cf6?text=The+Last+of+Us'"
+      />
+
+      <!-- Vinheta sutil para garantir legibilidade perfeita mantendo a foto nítida -->
+      <div class="hidden sm:block absolute inset-0 bg-gradient-to-r from-[#07070c]/85 via-[#07070c]/30 to-[#07070c]/60 pointer-events-none"></div>
+      <div class="hidden sm:block absolute inset-0 bg-gradient-to-t from-[#07070c]/90 via-transparent to-[#07070c]/45 pointer-events-none"></div>
+
+      <!-- Conteúdo sobreposto na arte (no mobile fica abaixo da foto inteira para não cobrir nada) -->
+      <div class="relative sm:absolute sm:inset-0 flex flex-col justify-between p-5 sm:p-6 md:p-8 bg-[#0d0d16] sm:bg-transparent">
+        <!-- Linha Superior: Selos -->
+        <div class="flex flex-wrap items-center justify-between gap-2.5 mb-4 sm:mb-0">
+          <span class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-[11px] sm:text-xs font-bold tracking-widest uppercase bg-[#07070c]/80 border border-[#8b5cf6]/45 text-slate-100 backdrop-blur-md">
+            <span class="w-2 h-2 rounded-full bg-[#3b82f6] shadow-[0_0_8px_#3b82f6]"></span>
+            NAUGHTY DOG • AMAZING GAMES
+          </span>
+
+          <span class="inline-flex items-center px-3.5 py-1.5 rounded-full text-[11px] sm:text-xs font-semibold bg-[#07070c]/80 border border-[#3b82f6]/45 text-slate-100 backdrop-blur-md">
+            Ação • Aventura • Sobrevivência
+          </span>
+        </div>
+
+        <!-- Linha Inferior: Título, Sinopse e Classificação 18+ -->
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+          <div class="max-w-xl">
+            <p class="text-[11px] sm:text-xs font-bold tracking-[0.16em] uppercase text-[#a78bfa] drop-shadow mb-1">
+              SOBREVIVA. LUTE. ENCONTRE A LUZ.
+            </p>
+            <h1 class="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold uppercase tracking-wide text-white leading-none drop-shadow-[0_4px_16px_rgba(0,0,0,0.95)] mb-2.5">
+              THE LAST OF US
+            </h1>
+            <p class="text-xs sm:text-sm md:text-[15px] text-slate-100 leading-relaxed drop-shadow-[0_2px_10px_rgba(0,0,0,0.95)]">
+              Em uma civilização devastada onde infectados e sobreviventes implacáveis correm soltos, Joel é contratado para tirar Ellie de uma zona de quarentena militar.
+            </p>
+          </div>
+
+          <!-- Selo Classificação 18+ -->
+          <div class="self-start md:self-end flex items-center gap-3 px-3.5 py-2.5 rounded-xl bg-[#07070c]/85 border border-[#8b5cf6]/45 backdrop-blur-md shrink-0">
+            <div class="w-10 h-10 rounded-lg bg-[#07070c] border-2 border-[#8b5cf6] flex flex-col items-center justify-center leading-none">
+              <strong class="text-sm font-extrabold text-white">18+</strong>
+              <span class="text-[9px] font-bold text-[#3b82f6] tracking-wider mt-0.5">ANOS</span>
+            </div>
+            <div class="text-xs leading-tight text-slate-300">
+              <strong class="block text-white font-bold">Classificação 18+</strong>
+              <span>Violência Extrema</span><br />
+              <span>Temas Adultos</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Seção de Preços e Edições -->
+    <section class="mt-9">
+      <div class="flex items-center gap-3 mb-5">
+        <span class="w-1.5 h-6 rounded-full bg-gradient-to-b from-[#8b5cf6] to-[#3b82f6]"></span>
+        <h2 class="text-xl sm:text-2xl font-bold text-white">Escolha sua edição</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Card Edição Padrão -->
+        <article class="rounded-2xl bg-[#0d0d16] border border-[#8b5cf6]/25 p-6 sm:p-8 flex flex-col justify-between transition-all duration-200 hover:-translate-y-1 hover:border-[#3b82f6] hover:shadow-[0_16px_38px_rgba(37,99,235,0.2)]">
+          <div>
+            <span class="inline-block text-xs font-bold uppercase tracking-widest text-[#3b82f6] mb-1.5">
+              Edição Padrão
+            </span>
+            <div class="flex items-baseline gap-2 mb-4">
+              <span class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">R$ 299,00</span>
+              <span class="text-sm font-semibold text-slate-400">Edição Padrão</span>
+            </div>
+            <p class="text-slate-300 text-sm sm:text-base leading-relaxed mb-7">
+              inclui o jogo base completo e a expansão de história Left Behind.
+            </p>
+          </div>
+
+          <button
+            type="button"
+            onclick="openCheckout('Edição Padrão', 'R$ 299,00')"
+            class="w-full py-3.5 px-5 rounded-xl font-bold text-white text-base bg-gradient-to-r from-[#7c3aed] to-[#2563eb] hover:from-[#8b5cf6] hover:to-[#3b82f6] shadow-lg shadow-[#7c3aed]/35 transition-all active:scale-[0.99] cursor-pointer"
+          >
+            Compre aqui.
+          </button>
+        </article>
+
+        <!-- Card Edição Deluxe -->
+        <article class="relative rounded-2xl bg-gradient-to-br from-[#131324] via-[#0d0d16] to-[#0c1428] border border-[#8b5cf6]/55 p-6 sm:p-8 flex flex-col justify-between shadow-[0_12px_34px_rgba(124,58,237,0.18)] transition-all duration-200 hover:-translate-y-1 hover:border-[#3b82f6] hover:shadow-[0_18px_42px_rgba(124,58,237,0.3)]">
+          <span class="absolute top-5 right-5 px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider bg-gradient-to-r from-[#7c3aed] to-[#2563eb] text-white shadow">
+            Mais Completo
+          </span>
+
+          <div>
+            <span class="inline-block text-xs font-bold uppercase tracking-widest text-[#a78bfa] mb-1.5">
+              Edição Deluxe
+            </span>
+            <div class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mb-4">
+              499,oo Deluxe
+            </div>
+            <p class="text-slate-300 text-sm sm:text-base leading-relaxed mb-7">
+              Inclui tudo da Padrão mais o desbloqueio imediato de melhorias de habilidades (cura e fabricação mais rápidas), melhorias de armas, modificadores (flechas explosivas, filtro visual e Modo Speedrun) e 6 visuais de armas.
+            </p>
+          </div>
+
+          <button
+            type="button"
+            onclick="openCheckout('499,oo Deluxe', 'R$ 499,00')"
+            class="w-full py-3.5 px-5 rounded-xl font-bold text-white text-base bg-gradient-to-r from-[#7c3aed] to-[#2563eb] hover:from-[#8b5cf6] hover:to-[#3b82f6] shadow-lg shadow-[#2563eb]/35 transition-all active:scale-[0.99] cursor-pointer"
+          >
+            Compre aqui.
+          </button>
+        </article>
+      </div>
+    </section>
+
+    <!-- Seção de Plataformas Disponíveis -->
+    <section class="mt-8 rounded-2xl bg-[#0d0d16] border border-[#8b5cf6]/25 p-6 sm:p-8">
+      <h3 class="text-lg font-bold text-white mb-3.5">
+        Plataformas disponíveis para jogar:
+      </h3>
+      <div class="flex flex-col gap-2.5 text-slate-200 text-base font-medium">
+        <div class="flex items-center gap-3">
+          <span class="w-2 h-2 rounded-full bg-gradient-to-r from-[#8b5cf6] to-[#3b82f6]"></span>
+          <span>-PlayStation 4</span>
+        </div>
+        <div class="flex items-center gap-3">
+          <span class="w-2 h-2 rounded-full bg-gradient-to-r from-[#8b5cf6] to-[#3b82f6]"></span>
+          <span>PlayStation 5</span>
+        </div>
+        <div class="flex items-center gap-3">
+          <span class="w-2 h-2 rounded-full bg-gradient-to-r from-[#8b5cf6] to-[#3b82f6]"></span>
+          <span>PC</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Rodapé -->
+  <footer class="border-t border-[#8b5cf6]/20 bg-[#07070c] py-6 text-center text-xs text-slate-500">
+    &copy; 2026 Amazing Games. Todos os direitos reservados.
+  </footer>
+
+  <!-- Modal Interativo de Checkout e Confirmação de Compra -->
+  <div
+    id="checkoutModal"
+    class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-[#07070c]/85 backdrop-blur-md"
+    role="dialog"
+    aria-modal="true"
+  >
+    <div id="modalBox" class="w-full max-w-md rounded-2xl bg-[#0d0d16] border border-[#8b5cf6]/50 p-6 sm:p-7 shadow-[0_24px_64px_rgba(0,0,0,0.9),0_0_40px_rgba(59,130,246,0.25)]">
+      <!-- Conteúdo injetado dinamicamente via JS -->
+    </div>
+  </div>
+
+  <script>
+    const checkoutModal = document.getElementById('checkoutModal');
+    const modalBox = document.getElementById('modalBox');
+    let activeEdition = '';
+    let activePrice = '';
+
+    // Abre a etapa de checkout com a edição escolhida
+    function openCheckout(edition, price) {
+      activeEdition = edition;
+      activePrice = price;
+
+      modalBox.innerHTML = `
+        <div class="flex items-center justify-between mb-5">
+          <h3 class="text-lg font-bold text-white">Finalizar Compra — Amazing Games</h3>
+          <button type="button" onclick="closeCheckout()" aria-label="Fechar" class="text-slate-400 hover:text-white text-2xl leading-none cursor-pointer">&times;</button>
+        </div>
+
+        <div class="rounded-xl bg-[#131324] border border-[#8b5cf6]/35 p-4 mb-5 flex items-center justify-between gap-3">
+          <div>
+            <strong class="block text-sm sm:text-base text-white">The Last of Us</strong>
+            <span class="text-xs text-[#a78bfa] font-medium">${edition}</span>
+          </div>
+          <div class="text-lg font-extrabold text-[#3b82f6]">${price}</div>
+        </div>
+
+        <form onsubmit="handlePurchase(event)" class="space-y-4">
+          <div>
+            <label for="platformInput" class="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-1.5">
+              Plataforma desejada
+            </label>
+            <select id="platformInput" required class="w-full rounded-xl bg-[#07070c] border border-slate-700 focus:border-[#3b82f6] focus:outline-none px-3.5 py-2.5 text-sm text-white">
+              <option value="PlayStation 4">PlayStation 4</option>
+              <option value="PlayStation 5">PlayStation 5</option>
+              <option value="PC">PC</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="buyerInput" class="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-1.5">
+              Nome completo
+            </label>
+            <input type="text" id="buyerInput" placeholder="Digite seu nome" required class="w-full rounded-xl bg-[#07070c] border border-slate-700 focus:border-[#3b82f6] focus:outline-none px-3.5 py-2.5 text-sm text-white" />
+          </div>
+
+          <div>
+            <label for="paymentInput" class="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-1.5">
+              Forma de pagamento
+            </label>
+            <select id="paymentInput" required class="w-full rounded-xl bg-[#07070c] border border-slate-700 focus:border-[#3b82f6] focus:outline-none px-3.5 py-2.5 text-sm text-white">
+              <option value="PIX (Liberação imediata)">PIX (Liberação imediata)</option>
+              <option value="Cartão de Crédito">Cartão de Crédito</option>
+              <option value="Boleto Bancário">Boleto Bancário</option>
+            </select>
+          </div>
+
+          <button type="submit" class="w-full py-3.5 px-5 rounded-xl font-bold text-white text-sm sm:text-base bg-gradient-to-r from-[#7c3aed] to-[#2563eb] hover:from-[#8b5cf6] hover:to-[#3b82f6] shadow-lg shadow-[#7c3aed]/35 transition-all cursor-pointer mt-2">
+            Confirmar Compra (${price})
+          </button>
+        </form>
+      `;
+
+      checkoutModal.classList.remove('hidden');
+      checkoutModal.classList.add('flex');
+    }
+
+    // Exibe a confirmação da compra concluída na tela
+    function handlePurchase(event) {
+      event.preventDefault();
+      const platform = document.getElementById('platformInput').value;
+      const buyerName = document.getElementById('buyerInput').value.trim() || 'Cliente Amazing Games';
+      const payment = document.getElementById('paymentInput').value;
+      const orderNumber = 'AG-' + Math.floor(100000 + Math.random() * 900000);
+      const activationKey =
+        'TLOU-' +
+        Math.random().toString(36).substring(2, 6).toUpperCase() +
+        '-' +
+        Math.random().toString(36).substring(2, 6).toUpperCase() +
+        '-AG26';
+
+      modalBox.innerHTML = `
+        <div class="text-center">
+          <div class="w-16 h-16 rounded-full mx-auto mb-4 bg-gradient-to-br from-[#7c3aed] to-[#2563eb] flex items-center justify-center text-white text-3xl font-bold shadow-[0_0_28px_rgba(59,130,246,0.5)]">
+            &#10003;
+          </div>
+          <h3 class="text-xl font-extrabold text-white mb-1.5">Compra Confirmada!</h3>
+          <p class="text-sm text-slate-300 mb-5">
+            Parabéns, <strong class="text-white">${buyerName}</strong>! Seu pedido <strong class="text-[#3b82f6]">#${orderNumber}</strong> na <strong class="text-[#a78bfa]">Amazing Games</strong> foi aprovado com sucesso.
+          </p>
+
+          <div class="rounded-xl bg-[#131324] border border-[#8b5cf6]/35 p-4 mb-4 text-left space-y-1.5 text-xs sm:text-sm">
+            <div class="flex justify-between">
+              <span class="text-slate-400">Jogo:</span>
+              <span class="font-semibold text-white">The Last of Us</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-slate-400">Edição:</span>
+              <span class="font-semibold text-[#a78bfa]">${activeEdition}</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-slate-400">Plataforma:</span>
+              <span class="font-semibold text-white">${platform}</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-slate-400">Pagamento:</span>
+              <span class="font-semibold text-slate-200">${payment}</span>
+            </div>
+            <div class="flex justify-between pt-1.5 border-t border-slate-800">
+              <span class="text-slate-400">Total pago:</span>
+              <span class="font-extrabold text-[#3b82f6]">${activePrice}</span>
+            </div>
+          </div>
+
+          <div class="rounded-xl bg-[#07070c] border border-dashed border-[#8b5cf6] p-3 mb-5 flex items-center justify-between gap-2">
+            <span class="font-mono text-xs sm:text-sm tracking-wider text-[#3b82f6] font-bold">${activationKey}</span>
+            <button
+              type="button"
+              onclick="copyActivationKey('${activationKey}', this)"
+              class="px-3 py-1.5 rounded-lg text-xs font-bold bg-[#2563eb]/20 border border-[#3b82f6] text-[#3b82f6] hover:bg-[#3b82f6] hover:text-white transition-colors cursor-pointer shrink-0"
+            >
+              Copiar chave
+            </button>
+          </div>
+
+          <button
+            type="button"
+            onclick="closeCheckout()"
+            class="w-full py-3 px-5 rounded-xl font-bold text-white text-sm sm:text-base bg-gradient-to-r from-[#7c3aed] to-[#2563eb] hover:from-[#8b5cf6] hover:to-[#3b82f6] transition-all cursor-pointer"
+          >
+            Concluir
+          </button>
+        </div>
+      `;
+    }
+
+    function copyActivationKey(code, button) {
+      const textarea = document.createElement('textarea');
+      textarea.value = code;
+      textarea.style.position = 'fixed';
+      textarea.style.opacity = '0';
+      document.body.appendChild(textarea);
+      textarea.select();
+      document.execCommand('copy');
+      document.body.removeChild(textarea);
+
+      button.textContent = 'Copiada!';
+      setTimeout(() => {
+        button.textContent = 'Copiar chave';
+      }, 2000);
+    }
+
+    function closeCheckout() {
+      checkoutModal.classList.add('hidden');
+      checkoutModal.classList.remove('flex');
+    }
+
+    checkoutModal.addEventListener('click', (event) => {
+      if (event.target === checkoutModal) {
+        closeCheckout();
+      }
+    });
+  </script>
+</body>
+</html>
